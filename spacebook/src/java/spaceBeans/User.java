@@ -12,7 +12,6 @@ public class User {
     private String firstName;
     private String lastName;
     private String password;
-    private String userLevel;
 
     /**
      * Constructor: Used to initialize a User bean
@@ -20,36 +19,18 @@ public class User {
      * @param firstName
      * @param lastName
      * @param password
-     * @param userLevel
      */
-    public User(int userID, String firstName, String lastName, String password, String userLevel) {
+    public User(int userID, String firstName, String lastName, String password) {
         this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
-        this.userLevel = userLevel;
     }
 
     /**
      * Empty Constructor: Used to initialize a User bean without setting any member variables
      */
     public User() {
-    }
-
-    /**
-     * Get the value of userLevel
-     * @return the value of userLevel
-     */
-    public String getUserLevel() {
-        return userLevel;
-    }
-
-    /**
-     * Set the value of userLevel
-     * @param userLevel new value of userLevel
-     */
-    public void setUserLevel(String userLevel) {
-        this.userLevel = userLevel;
     }
 
     /**
