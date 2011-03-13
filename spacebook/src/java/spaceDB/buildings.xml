@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE buildings SYSTEM buildings.dtd>
+<!--
+    Document   : buildings.xml
+    Created on : March 13, 2011, 1:34 PM
+    Author     : Benjamin
+    Description:
+        Purpose of the document follows.
+-->
+<buildings>
+    <building id="1">
+        <name>Alumni Hall</name>
+        <buildingCode>AH</buildingCode>
+    </building>
+    <building id="2">
+        <name>Biology Building</name>
+        <buildingCode>BB</buildingCode>
+    </building>
+    <building id="3">
+        <name>Cantebury College</name>
+        <buildingCode>CC</buildingCode>
+    </building>
+    <building id="4">
+        <name>Cody Hall</name>
+        <buildingCode>CH</buildingCode>
+    </building>
+    <building id="5">
+        <name>Chrysler Hall North</name>
+        <buildingCode>CN</buildingCode>
+    </building>
+    <building id="6">
+        <name>Clark Residence</name>
+        <buildingCode>CR</buildingCode>
+    </building>
+    <building id="7">
+        <name>Chrysler Hall South</name>
+        <buildingCode>CS</buildingCode>
+    </building>
+    <building id="8">
+        <name>Chrysler Tower</name>
+        <buildingCode>CT</buildingCode>
+    </building>
+    <building id="9">
+        <name>Drama Building</name>
+        <buildingCode>DB</buildingCode>
+    </building>
+    <building id="10">
+        <name>Jackman Dramatic Art Centre</name>
+        <buildingCode>DC</buildingCode>
+    </building>
+    <building id="11">
+        <name>Dilon Hall</name>
+        <buildingCode>DH</buildingCode>
+    </building>
+    <building id="12">
+        <name>Neale Education Building</name>
+        <buildingCode>ED</buildingCode>
+    </building>
+    <building id="13">
+        <name>Essex Hall</name>
+        <buildingCode>EH</buildingCode>
+    </building>
+    <building id="14">
+        <name>Electa Hall</name>
+        <buildingCode>EH</buildingCode>
+    </building>
+    <building id="15">
+        <name>Erie Hall</name>
+        <buildingCode>EH</buildingCode>
+    </building>
+    <building id="16">
+        <name>HK Building</name>
+        <buildingCode>HK</buildingCode>
+    </building>
+    <building id="17">
+        <name>Ianni Law Building</name>
+        <buildingCode>LB</buildingCode>
+    </building>
+    <building id="18">
+        <name>LeBel Building</name>
+        <buildingCode>LE</buildingCode>
+    </building>
+    <building id="19">
+        <name>Sir Wilfred Laurier Hall</name>
+        <buildingCode>LH</buildingCode>
+    </building>
+    <building id="20">
+        <name>Leddy Library</name>
+        <buildingCode>LL</buildingCode>
+    </building>
+    <building id="21">
+        <name>Lambton Tower</name>
+        <buildingCode>LT</buildingCode>
+    </building>
+    <building id="22">
+        <name>Sir John A MacDonald Hall</name>
+        <buildingCode>MC</buildingCode>
+    </building>
+    <building id="23">
+        <name>Memorial Hall</name>
+        <buildingCode>MH</buildingCode>
+    </building>
+    <building id="24">
+        <name>Music Building</name>
+        <buildingCode>MU</buildingCode>
+    </building>
+    <building id="25">
+        <name>Odette Building</name>
+        <buildingCode>OB</buildingCode>
+    </building>
+    <building id="26">
+        <name>St. Denis Centre</name>
+        <buildingCode>SD</buildingCode>
+    </building>
+    <building id="27">
+        <name>Toldo Health Education Centre</name>
+        <buildingCode>TH</buildingCode>
+    </building>
+    <building id="28">
+        <name>C.A.W. Centre</name>
+        <buildingCode>UC</buildingCode>
+    </building>
+    <building id="29">
+        <name>Vanier Hall</name>
+        <buildingCode>VH</buildingCode>
+    </building>
+    <building id="30">
+        <name>West Library</name>
+        <buildingCode>WL</buildingCode>
+    </building>
+</buildings>
