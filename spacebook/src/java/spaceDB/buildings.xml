@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE buildings SYSTEM buildings.dtd>
+<!DOCTYPE buildings SYSTEM "buildings.dtd">
 <!--
     Document   : buildings.xml
     Created on : March 13, 2011, 1:34 PM
