@@ -23,7 +23,7 @@
                 <a href="index.jsp">Home</a>
                 <a href="login.jsp">Login/Register</a>
                 <a href="contact.jsp">Contact Us</a>
-                <a href="browse_spaces.jsp">Browse Spaces</a>
+                <a href="buildings.xml">View Buildings</a>
             </div><!-- end:navigation -->
             <div class="padder">
                 <div class="intro">Welcome to spacebook! <br /><br />
