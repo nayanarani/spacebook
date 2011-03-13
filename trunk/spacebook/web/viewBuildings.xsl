@@ -17,10 +17,10 @@
     <xsl:template match="/">
         <html>
             <head>
-                <title>Buidlings</title>
+                <title>Buildings</title>
             </head>
             <body>
-                <table>
+                <table border="1">
                     <thead>
                         <tr>
                             <th colspan="2">Buildings</th>
@@ -31,17 +31,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <xsl:apply-templates select="buildings/building" />
+                        <xsl:for-each select="/buildings/building">
+                            <tr>
+                                <td><xsl:value-of select="name" /></td>
+                                <td><xsl:value-of select="buildingCode" /></td>
+                            </tr>
+                        </xsl:for-each>
                     </tbody>
                 </table>
             </body>
         </html>
     </xsl:template>
 
-    <xsl:template>
-        <tr>
-            <td><xsl:value-of select="name" /></td>
-            <td><xsl:value-of select="buildingCode" /></td>
-        </tr>
-    </xsl:template>
 </xsl:stylesheet>
