@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS Groups(
     name varchar(30),
     adminID integer,
     CONSTRAINT pkcGroups Primary Key (id),
-    CONSTRAINT fkcGroups1 Foreign Key (adminID) references Users(id)
+    CONSTRAINT fkcGroups1 Foreign Key (adminID) references Users(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 ALTER TABLE USERS ADD CONSTRAINT fkcUsers1 FOREIGN KEY (groupID) REFERENCES Groups(id);
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS Rooms(
     capacity integer,
     projector varchar(2),
     CONSTRAINT pkRooms Primary Key (id),
-    CONSTRAINT fkcRooms1 Foreign Key (buildingID) references Buildings(id)
+    CONSTRAINT fkcRooms1 Foreign Key (buildingID) references Buildings(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Timeslots(
@@ -43,13 +43,14 @@ CREATE TABLE IF NOT EXISTS Timeslots(
 CREATE TABLE IF NOT EXISTS Bookings(
     id integer NOT NULL AUTO_INCREMENT,
     timeslotID integer,
+    bookingDate DATE,
     isBooked varchar(2) DEFAULT FALSE,
     roomID integer NOT NULL,
     groupID integer,
     CONSTRAINT pkcBookings Primary Key (id),
-    CONSTRAINT fkcBookings1 Foreign Key (timeslotID) references Timeslots(id),
-    CONSTRAINT fkcBookings2 Foreign Key (roomID) references Rooms(id),
-    CONSTRAINT fkcBookings3 Foreign Key (groupID) references Groups(id)
+    CONSTRAINT fkcBookings1 Foreign Key (timeslotID) references Timeslots(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fkcBookings2 Foreign Key (roomID) references Rooms(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fkcBookings3 Foreign Key (groupID) references Groups(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS GroupUserXR(
@@ -57,8 +58,8 @@ CREATE TABLE IF NOT EXISTS GroupUserXR(
     groupID integer NOT NULL,
     userID integer NOT NULL,
     CONSTRAINT pkcGroupUserXR Primary Key (id),
-    CONSTRAINT fkcGroupUserXR1 Foreign Key (groupID) references Groups(id),
-    CONSTRAINT fkcGroupUserXR2 Foreign Key (userID) references Users(id),
+    CONSTRAINT fkcGroupUserXR1 Foreign Key (groupID) references Groups(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fkcGroupUserXR2 Foreign Key (userID) references Users(id) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT ukcGroupUserXR1 UNIQUE (groupID, userID)
 );
 
