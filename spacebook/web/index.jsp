@@ -1,38 +1,22 @@
-<%@include file="header.jsp" %>
+<%-- 
+    Document   : spacebook home page
+    Created on : 6-Mar-2011, 1:55:19 PM
+    Author     : Steve Westfall
+--%>
 
-  <hr />
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-    <div id="subheader" class="span-24 last">
-      <h3>Need a space booked?</h3>
-      <h2 class="loud">Sign Up</h2>
-    </div>
-
-  <hr />
-
-      <div class="field">
-	<label for="email">E-mail</label><br />
-	<input id="email" placeholder="E-mail" name="email" size="30" type="text" />
-      </div>
-
-      <div class="field">
-	<label for="username">Username</label><br />
-	<input id="username" placeholder="Username" name="username" size="30" type="text" />
-      </div>
-
-      <div class="field">
-	<label for="password">Password</label><br />
-	<input id="password" name="password" size="30" type="password" />
-      </div>
-
-      <div class="field">
-	<label for="confirmpassword">Confirm Password</label><br />
-	<input id="confirmpassword" name="password" size="30" type="password" />
-      </div>
-
-      <div class="actions">
-	<input id="user_submit" name="commit" type="submit" value="Sign up!" />
-      </div>
-
-  <hr />
-
-  <%@include file="footer.jsp" %>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Welcome to spacebook!</title>
+        <%@include file="header.jsp" %>
+            <div class="intro">Welcome to spacebook! <br /><br />
+                We are currently developing a java based web application for our 60-334: WWW Info Systems Development class project at the <a href="http://www.uwindsor.ca" target="_blank">University of Windsor</a>. The application will allow users to book a space for a certain date or time frame in order to hold an event or meeting.<br /><br />
+                Users will be able to register/create an account and join other users in forming groups.<br />
+                Users or groups will be able to view a list of spaces and their availability.<br /><br />
+                If a space is available during a desired meeting time, a user or a group will be allowed to book that space making it no-longer available to be booked by other users or groups.
+            </div><!-- end:intro -->
+        <%@include file="footer.jsp" %>
+</html>

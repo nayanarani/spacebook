@@ -1,27 +1,42 @@
 <%@include file="header.jsp" %>
+<script>
+function validateForm()
+{
+    if(document.frm.username.value=="")
+    {
+      alert("User Name should not be left blank");
+      document.frm.username.focus();
+      return false;
+    }
 
-  <hr />
-  
-    <div id="subheader" class="span-24 last">
-      <h2 class="loud">Sign In</h2>
-    </div>
+    if(document.frm.password.value=="")
+    {
+      alert("Password should not be left blank");
+      document.frm.password.focus();
+      return false;
+    }
+    
+}
+</script>
 
-  <hr />
+    <h2>Sign In</h2>
 
-      <div class="field">
-	<label for="username">Username</label><br />
-	<input id="username" placeholder="Username" name="username" size="30" type="text" />
-      </div>
+    <div class="formbox">
+        <form name="frm" action="" method="get" onSubmit="validateForm()">
+            <table>
+		<tr>
+                    <td>Username</td>
+                    <td><input id="username" name="username" size="30" type="text" /></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input id="password" name="password" size="30" type="password" /></td>
+                </tr>
+                <tr>
+                    <td><input id="user_submit" name="commit" type="submit" value="Sign up!" /></td>
+                </tr>
+            </table>
+        </form>
+    </div><!-- end:formbox -->
 
-      <div class="field">
-	<label for="password">Password</label><br />
-	<input id="password" name="password" size="30" type="password" />
-      </div>
-
-      <div class="actions">
-	<input id="user_submit" name="commit" type="submit" value="Sign up!" />
-      </div>
-
-  <hr />
-
-  <%@include file="footer.jsp" %>
+<%@include file="footer.jsp" %>

@@ -2,16 +2,10 @@
     Document   : header
     Created on : Mar 14, 2011, 3:04:55 PM
     Author     : Jamie Hush
+    Modified by: Steve Westfall
 --%>
-  <footer>
-      <nav>
-      <div align="center">
-      Spacebook
-      </div>
-      </nav>
-  </footer>
 
-  </div>
-
-  </body>
-</html>
+            </div><!-- end:padder -->
+            
+        </div><!-- end:main -->
+    </body>
