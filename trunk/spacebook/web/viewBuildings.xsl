@@ -22,15 +22,15 @@
                 <link rel="stylesheet" type="text/css" href="css/spacebook_style.css" />
             </head>
             <body>
-                <div class="header">
+                <div class="header_image">
                     <img src="images/spacebook_logo.jpg" border="0" alt="spacebook" title="Welcome to spacebook!" />
-                </div><!-- end:header -->
+                </div><!-- end:header_image -->
 
                 <div class="main">
                     <div class="navigation">
                         <a href="index.jsp">Home</a>
-                        <a href="login.jsp">Login/Register</a>
-                        <a href="contact.jsp">Contact Us</a>
+                        <a href="signin.jsp">Login</a>
+                        <a href="signup.jsp">Register</a>
                     </div><!-- end:navigation -->
                     <div class="padder">
                         <table class="buildingTable" cell-spacing="1">
