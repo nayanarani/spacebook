@@ -1,0 +1,6 @@
+<%@taglib  prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+<%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<c:if test="${applicationScope.dataSource == NULL}">
+    <sql:setDataSource var="dataSource" driver="org.apache.derby.jdbc.ClientDriver" password="spacePass" user="spaceUser" url="jdbc:derby://localhost:1527/spaceDB" scope="application" />
+</c:if>

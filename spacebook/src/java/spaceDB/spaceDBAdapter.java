@@ -17,17 +17,13 @@ import java.sql.Statement;
 
 public class spaceDBAdapter {
     private String tableName;
-    private String url;
-    private String driver;
-    private String user;
-    private String pwd;
+    private String url = "jdbc:derby://localhost:1527/spaceDB";
+    private String driver = "org.apache.derby.jdbc.ClientDriver";
+    private String user = "spaceUser";
+    private String pwd = "spacePass";
 
-    public spaceDBAdapter(String tableName, String url, String driver, String user, String pwd) {
+    public spaceDBAdapter(String tableName) {
         this.tableName = tableName;
-        this.url = url;
-        this.driver = driver;
-        this.user = user;
-        this.pwd = pwd;
     }
 
     /**
@@ -38,6 +34,43 @@ public class spaceDBAdapter {
         Class.forName(driver);
         Connection con = DriverManager.getConnection(url, user, pwd);
         return con;
+    }
+
+    /**
+     * This function will search the given column for the given value and return whether or not it is found
+     * @param columnName
+     * @param value
+     * @return
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
+    public boolean valueExists(String columnName, String value) throws ClassNotFoundException, SQLException {
+        Connection con = getConnection();
+        Statement stmt = con.createStatement();
+        String query = "SELECT * FROM "+tableName+" WHERE "+columnName+"= '"+value+"'";
+        ResultSet rs = stmt.executeQuery(query); // executeQuery returns a ResultSet
+        ResultSetMetaData rsmData = rs.getMetaData();
+        int colCount = rsmData.getColumnCount();
+        if(colCount == 0){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    /**
+     * Inserts a User into the DB
+     * @param uName
+     * @param fName
+     * @param lName
+     * @param password
+     */
+    public void insertUser(String uName, String fName, String lName, String password) throws ClassNotFoundException, SQLException {
+        Connection con = getConnection();
+        Statement stmt = con.createStatement();
+        String userDataSQL = "INSERT INTO USERS(userName, firstName, lastName, password) VALUES('"+uName+"', '"+fName+"', '"+lName+"', '"+password+"')";
+        stmt.executeUpdate(userDataSQL);
     }
 
     /**
