@@ -1,0 +1,41 @@
+<%--
+    Document   : signInForm
+    Created on : 18-Mar-2011, 6:23:13 PM
+    Author     : James Hush, Steve Westfall
+--%>
+<%@page import="java.util.*" %>
+
+<h2>Sign In</h2>
+
+    <div class="formbox">
+        <form name="login" action="signin.jsp" method="post" onSubmit=""validateForm()>
+            <table>
+                <tr>
+                    <td>Username:<br /><input id="userName" name="userName" size="30" type="text" /></td>
+                </tr>
+                <tr>
+                    <td>Password:<br /><input id="password" name="password" size="30" type="password" /></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Sign up!" /></td>
+                </tr>
+            </table>
+        </form>
+    </div><!-- end:formbox -->
+
+<%!
+    // Define error messages
+    Map errorMap = new HashMap();
+    public void jspInit() {
+        errorMap.put(spaceBeans.User.ERR_UNAME_ENTER, "Please enter a username");
+        errorMap.put(spaceBeans.User.ERR_UNAME_INVALID, "The username entered is already taken");
+        errorMap.put(spaceBeans.User.ERR_FNAME_ENTER, "Please enter first name");
+        errorMap.put(spaceBeans.User.ERR_FNAME_INVALID, "First name must be letters only");
+        errorMap.put(spaceBeans.User.ERR_LNAME_ENTER, "Please enter last name");
+        errorMap.put(spaceBeans.User.ERR_LNAME_INVALID, "Last name must be letters only");
+        errorMap.put(spaceBeans.User.ERR_PASSWD_ENTER, "Please enter a password");
+        errorMap.put(spaceBeans.User.ERR_CONFIRM_ENTER, "Please confirm password");
+        errorMap.put(spaceBeans.User.ERR_PASSWD_INVALID, "The password must be 6-10 characters (alpha numeric characters only)");
+        errorMap.put(spaceBeans.User.ERR_CONFIRM_INVALID, "The password and confirm password did not match");
+    }
+%>

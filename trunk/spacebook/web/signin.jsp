@@ -1,42 +1,30 @@
-<%@include file="header.jsp" %>
-<script>
-function validateForm()
-{
-    if(document.frm.username.value=="")
-    {
-      alert("User Name should not be left blank");
-      document.frm.username.focus();
-      return false;
-    }
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-    if(document.frm.password.value=="")
-    {
-      alert("Password should not be left blank");
-      document.frm.password.focus();
-      return false;
-    }
-    
-}
-</script>
+<%-- 
+    Document   : spacebook home page
+    Created on : 15-Mar-2011, 12:25:19 PM
+    Authors     : James Hush, Steve Westfall
+--%>
 
-    <h2>Sign In</h2>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Sign In to spacebook!</title>
+        <%@include file="header.jsp" %>
+        <div class="content">
+            <%
+                if (request.getMethod().equals("GET")) {
+            %>
+            <jsp:include page="WEB-INF/jspf/signInForm.jspf" />
+            <%
+                }else{
+            %>
+            <jsp:forward page="myAccount.jsp"/>
+            <%
+                }
+            %>
+            
+        </div><!-- end:content -->
+        <%@include file="footer.jsp" %>
 
-    <div class="formbox">
-        <form name="frm" action="" method="get" onSubmit="validateForm()">
-            <table>
-		<tr>
-                    <td>Username</td>
-                    <td><input id="username" name="username" size="30" type="text" /></td>
-                </tr>
-                <tr>
-                    <td>Password</td>
-                    <td><input id="password" name="password" size="30" type="password" /></td>
-                </tr>
-                <tr>
-                    <td><input id="user_submit" name="commit" type="submit" value="Sign up!" /></td>
-                </tr>
-            </table>
-        </form>
-    </div><!-- end:formbox -->
-
-<%@include file="footer.jsp" %>

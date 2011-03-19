@@ -53,7 +53,8 @@ text-decoration: none;
     padding: 5px;
 }
 
-.intro{
+.content{
+    float:left;
     width:680px;
     text-align: left;
     font: normal 16px calibri, arial, tahoma;
@@ -86,9 +87,9 @@ text-decoration: none;
 
 .formbox{
     float:left;
-    padding:5px;
     text-align: left;
     font: normal 16px calibri, arial, tahoma;
     color: #000000;
     width: 100%;
+    position: relative;
 }
