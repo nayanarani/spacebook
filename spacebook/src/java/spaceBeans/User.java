@@ -120,6 +120,91 @@ public class User {
         }
     }
 
+    public boolean processLogin() throws ClassNotFoundException, SQLException{
+        if(isValidLogin()){
+            spaceDBAdapter dbAdapter = new spaceDBAdapter("Users");
+            //dbAdapter.insertUser(userName, firstName, lastName, password);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    /**
+     * Validates the registration form
+     * @return allOK=true or false
+     */
+    public boolean isValidLogin() throws ClassNotFoundException, SQLException {
+        boolean allOk=true;
+        String[] REGEX = new String[3];
+        REGEX[0] = ".*[0-9].*"; //any digit
+        REGEX[1] = ".*[\\p{Punct}].*"; //any punctuation
+        REGEX[2] = ".*[\\p{Space}].*"; //any whitespace
+
+        int found = 0;
+        int i = 0;
+
+        //check that userName is not empty
+        if (userName.compareTo("") == 0) {
+          errors.put("userName","Please enter a username");
+          userName="";
+          allOk=false;
+        }
+
+        //check userName for spaces or punctuation. start at 1 to allow digits
+        for(i=1; i<3; i++){
+            if(userName.matches(REGEX[i])){
+                found++;
+            }
+
+            if(found>0){
+                errors.put("userName", "Username must not contain spaces or punctuation");
+                userName="";
+                allOk=false;
+                break;
+            }
+        }
+
+        //check that username exists
+        if (!checkUser(userName)){
+            errors.put("userName", "Username does not exist");
+            userName="";
+            allOk=false;
+        }
+
+        //check that password is not empty
+        if (password.compareTo("") == 0) {
+          errors.put("password","Please enter a password");
+          password="";
+          allOk=false;
+        }
+
+        //check that password is between 6-10 characters
+        if (password.length() < 6 || password.length() > 10) {
+          errors.put("password","Password must be between 6-10 characters long");
+          password="";
+          allOk=false;
+        }
+
+        found = 0; //reset found
+        //check password for spaces or punctuation. start at 1 to allow numbers
+        for(i=1; i<3; i++){
+            if(password.matches(REGEX[i])){
+                found++;
+            }
+
+            if(found>0){
+                errors.put("password", "Password must not contain spaces or punctuation");
+                password="";
+                allOk=false;
+                break;
+            }
+        }
+
+        return allOk;
+      }
+
     /**
      * Validates the registration form
      * @return allOK=true or false 
@@ -141,13 +226,6 @@ public class User {
           allOk=false;
         }
 
-        //check that username does not already exist
-        if (checkUser(userName)){
-            errors.put("userName", "Username already exists");
-            userName="";
-            allOk=false;
-        }
-
         //check userName for spaces or punctuation. start at 1 to allow digits
         for(i=1; i<3; i++){
             if(userName.matches(REGEX[i])){
@@ -160,6 +238,13 @@ public class User {
                 allOk=false;
                 break;
             }
+        }
+
+        //check that username does not already exist
+        if (checkUser(userName)){
+            errors.put("userName", "Username already exists");
+            userName="";
+            allOk=false;
         }
 
         //check that firstName is not empty
@@ -251,6 +336,7 @@ public class User {
 
         return allOk;
       }
+
       public String getErrorMsg(String s) {
         String errorMsg =(String)errors.get(s.trim());
         return (errorMsg == null) ? "":errorMsg;
