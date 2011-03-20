@@ -48,14 +48,18 @@ public class spaceDBAdapter {
         Connection con = getConnection();
         Statement stmt = con.createStatement();
         String query = "SELECT * FROM "+tableName+" WHERE "+columnName+"= '"+value+"'";
-        ResultSet rs = stmt.executeQuery(query); // executeQuery returns a ResultSet
-        ResultSetMetaData rsmData = rs.getMetaData();
-        int colCount = rsmData.getColumnCount();
-        if(colCount == 0){
-            return false;
+        boolean whatIsReturned = stmt.execute(query); // executeQuery returns a ResultSet
+        if (whatIsReturned == true) {
+            ResultSet rs = stmt.getResultSet();
+            if(rs.getString(1) != null){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
         else{
-            return true;
+            return false;
         }
     }
 
