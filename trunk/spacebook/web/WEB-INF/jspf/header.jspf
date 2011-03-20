@@ -16,7 +16,7 @@
         <div class="main">
             <div class="navigation">
                 <a href="index.jsp">Home</a>
-                <a href="signin.jsp">Login</a>
+                <a href="login.jsp">Login</a>
                 <a href="register.jsp">Register</a>
                 <a href="buildings.xml">View Buildings</a>
             </div><!-- end:navigation -->
