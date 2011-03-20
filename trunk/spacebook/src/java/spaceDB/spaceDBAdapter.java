@@ -44,23 +44,19 @@ public class spaceDBAdapter {
      * @throws ClassNotFoundException
      * @throws SQLException
      */
-    public boolean valueExists(String columnName, String value) throws ClassNotFoundException, SQLException {
+    public boolean valueExists(String tableName, String value) throws ClassNotFoundException, SQLException {
         Connection con = getConnection();
         Statement stmt = con.createStatement();
-        String query = "SELECT * FROM "+tableName+" WHERE "+columnName+"= '"+value+"'";
-        boolean whatIsReturned = stmt.execute(query); // executeQuery returns a ResultSet
-        if (whatIsReturned == true) {
-            ResultSet rs = stmt.getResultSet();
-            if(rs.getString(1) != null){
-                return true;
-            }
-            else{
-                return false;
+        String query = "SELECT * FROM "+tableName;
+        ResultSet rs = stmt.executeQuery(query); // executeQuery returns a ResultSet
+        
+        while (rs.next()) {                                                //Loop through the ResultSet
+            String keyInTable = rs.getString(2);
+            if (keyInTable.compareTo(value) == 0) {                        //Check the keyToCheck against keys in the table
+               return true;                                                     //If a key is matched, return true
             }
         }
-        else{
-            return false;
-        }
+        return false;
     }
 
     /**

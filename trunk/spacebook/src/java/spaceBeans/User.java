@@ -109,11 +109,7 @@ public class User {
     public boolean checkUser(String userName) throws ClassNotFoundException, SQLException{
         spaceDBAdapter dbAdapter = new spaceDBAdapter("Users");
 
-        try{
-            return dbAdapter.valueExists("userName", userName);
-        }catch(Exception e){}
-
-        return false;
+        return dbAdapter.valueExists("Users", userName);
     }
 
     public boolean processSignUp() throws ClassNotFoundException, SQLException{
@@ -170,4 +166,5 @@ public class User {
         String errorMsg =(String)errors.get(s.trim());
         return (errorMsg == null) ? "":errorMsg;
       }
+
 }
