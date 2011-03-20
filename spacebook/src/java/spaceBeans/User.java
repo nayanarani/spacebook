@@ -115,7 +115,7 @@ public class User {
     public boolean processSignUp() throws ClassNotFoundException, SQLException{
         if(isValidSignUp()){
             spaceDBAdapter dbAdapter = new spaceDBAdapter("Users");
-            dbAdapter.insertUser(userName, userName, lastName, password);
+            dbAdapter.insertUser(userName, firstName, lastName, password);
             return true;
         }
         else{
