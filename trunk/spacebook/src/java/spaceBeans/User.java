@@ -7,7 +7,6 @@ package spaceBeans;
 
 import java.sql.SQLException;
 import java.util.*;
-import java.util.regex.*;
 import spaceDB.spaceDBAdapter;
 
 public class User {
@@ -257,28 +256,4 @@ public class User {
         return (errorMsg == null) ? "":errorMsg;
       }
 
-//      public static void main(String[] args){
-//        String[] REGEX = new String[3];
-//        REGEX[0] = ".*[0-9].*"; //any digit
-//        REGEX[1] = ".*[\\p{Punct}].*"; //any punctuation
-//        REGEX[2] = ".*[\\p{Space}].*"; //any whitespace
-//
-//        String check = "De Shaun";
-//
-//        int found = 0;
-//
-//        for(int i=0; i<2; i++){
-//            if(check.matches(REGEX[i])){
-//                found++;
-//            }
-//
-//            if(found>0){
-//                System.out.println("reject fname");
-//                break;
-//            }
-//        }
-//        if(found==0){
-//            System.out.println("approve fname");
-//        }
-//      }
 }
