@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Sign In to spacebook!</title>
-        <%@include file="header.jsp" %>
+        <%@include file="WEB-INF/jspf/header.jspf" %>
         <div class="content">
             <%
                 if (request.getMethod().equals("GET")) {
@@ -26,5 +26,5 @@
             %>
             
         </div><!-- end:content -->
-        <%@include file="footer.jsp" %>
+        <%@include file="WEB-INF/jspf/footer.jspf" %>
 
