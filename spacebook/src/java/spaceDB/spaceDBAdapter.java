@@ -6,13 +6,11 @@
 package spaceDB;
 
 import java.sql.Connection;
-import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 
 
 public class spaceDBAdapter {
@@ -74,52 +72,47 @@ public class spaceDBAdapter {
     }
 
     /**
-     * How to make simple SQL query against the DB using the Statement interface.
-     * @param querySqlString
+     * Inserts a Group into the DB
+     * @param name
+     * @param adminID
      * @throws ClassNotFoundException
      * @throws SQLException
      */
-    public void makeSimpleQueries(String querySqlString) throws ClassNotFoundException, SQLException {
+    public void insertGroup(String name, String adminID) throws ClassNotFoundException, SQLException {
         Connection con = getConnection();
         Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery(querySqlString); // executeQuery returns a ResultSet
-        ResultSetMetaData rsmData = rs.getMetaData();
-        int colCount = rsmData.getColumnCount();
-        while (rs.next()) { // each row at atime
-            StringBuilder buf = new StringBuilder();
-            for (int i = 1; i <= colCount; i++) { // each column of current row at a time
-                buf.append(rs.getObject(i).toString()).append("\t");
-            }
-            System.out.println(buf.toString());
-        }
-        con.close();
+        String groupDataSQL = "INSERT INTO GROUPS(name, adminID) VALUES('"+name+"', '"+adminID+"')";
+        stmt.executeUpdate(groupDataSQL);
     }
 
-
     /**
-     * How to execute any SQL query against the DB; select, insert, update, delete anything
-     * @param insertIntoSql
+     * Inserts a record into the GroupUserXR cross reference table
+     * @param groupID
+     * @param userID
+     * @throws ClassNotFoundException
+     * @throws SQLException
      */
-    public void executeSqlCommand(String sqlString) throws ClassNotFoundException, SQLException {
+    public void insertGroupUserXR(String groupID, String userID) throws ClassNotFoundException, SQLException {
         Connection con = getConnection();
         Statement stmt = con.createStatement();
-        boolean whatIsReturned = stmt.execute(sqlString); // executeQuery returns a ResultSet
-        if (whatIsReturned == true) { // The sql command returned a ResultSet, it was most likey a query.
-            // Lets obtain the ResultSet and print data
-            ResultSet rs = stmt.getResultSet() ;
-            ResultSetMetaData rsmData = rs.getMetaData();
-            int colCount = rsmData.getColumnCount();
-            while (rs.next()) { // each row at atime
-                StringBuilder buf = new StringBuilder();
-                for (int i = 1; i <= colCount; i++) { // each column of current row at a time
-                    buf.append(rs.getObject(i).toString()).append("\t");
-                }
-                System.out.println(buf.toString());
-            }
-        } else { // The sql command returned updated the table and the return value should be the number of rows affected/updated
-            int updateCount = stmt.getUpdateCount() ;
-            //System.out.printf("%d Rows were updated\n", updateCount);
-        }
-        con.close();
+        String groupUserDataSQL = "INSERT INTO GROUPUSERXR(groupID, userID) VALUES('"+groupID+"', '"+userID+"')";
+        stmt.executeUpdate(groupUserDataSQL);
+    }
+
+    /**
+     * Inserts a record into the Bookings table
+     * @param timeslotID
+     * @param bookingDate
+     * @param isBooked
+     * @param roomID
+     * @param groupID
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
+    public void insertBooking(String timeslotID, String bookingDate, boolean isBooked, String roomID, String groupID) throws ClassNotFoundException, SQLException {
+        Connection con = getConnection();
+        Statement stmt = con.createStatement();
+        String bookingDataSQL = "INSERT INTO BOOKINGS(timeslotID, bookingDate, isBooked, roomID, groupID) VALUES('"+timeslotID+"', '"+bookingDate+", "+isBooked+", "+roomID+", "+groupID+"')";
+        stmt.executeUpdate(bookingDataSQL);
     }
 }
