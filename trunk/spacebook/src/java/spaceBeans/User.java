@@ -7,8 +7,6 @@ package spaceBeans;
 
 import java.sql.SQLException;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.*;
 import spaceDB.spaceDBAdapter;
 
@@ -20,7 +18,7 @@ public class User {
     private String lastName;
     private String password;
     private String confirm_pw;
-    private Hashtable errors;
+    private Map errors;
 
 
     /**
@@ -37,7 +35,7 @@ public class User {
         this.lastName = lastName;
         this.password = password;
         this.confirm_pw = confirm_pw;
-        this.errors = new Hashtable();
+        this.errors = new HashMap();
     }
 
     /**
@@ -49,7 +47,7 @@ public class User {
         this.lastName = "";
         this.password = "";
         this.confirm_pw = "";
-        this.errors = new Hashtable();
+        this.errors = new HashMap();
     }
 
     /**
@@ -129,33 +127,125 @@ public class User {
      */
     public boolean isValidSignUp() throws ClassNotFoundException, SQLException {
         boolean allOk=true;
-        if (userName.equals("")) {
+        String[] REGEX = new String[3];
+        REGEX[0] = ".*[0-9].*"; //any digit
+        REGEX[1] = ".*[\\p{Punct}].*"; //any punctuation
+        REGEX[2] = ".*[\\p{Space}].*"; //any whitespace
+
+        int found = 0;
+        int i = 0;
+
+        //check that userName is not empty
+        if (userName.compareTo("") == 0) {
           errors.put("userName","Please enter a username");
           userName="";
           allOk=false;
         }
+
+        //check that username does not already exist
         if (checkUser(userName)){
             errors.put("userName", "Username already exists");
             userName="";
             allOk=false;
         }
-        if (firstName.equals("")) {
+
+        //check userName for spaces or punctuation. start at 1 to allow digits
+        for(i=1; i<3; i++){
+            if(userName.matches(REGEX[i])){
+                found++;
+            }
+
+            if(found>0){
+                errors.put("userName", "Username must not contain spaces or punctuation");
+                userName="";
+                allOk=false;
+                break;
+            }
+        }
+
+        //check that firstName is not empty
+        if (firstName.compareTo("") == 0) {
           errors.put("firstName","Please enter your first name");
           firstName="";
           allOk=false;
         }
-        if (lastName.equals("")) {
+
+        found = 0; //reset found
+        //check firstName for numbers or punctuation. stop at 2 to allow spaces
+        for(i=0; i<2; i++){
+            if(firstName.matches(REGEX[i])){
+                found++;
+            }
+
+            if(found>0){
+                errors.put("firstName", "First Name must not contain numbers or punctuation");
+                firstName="";
+                allOk=false;
+                break;
+            }
+        }
+
+        //check that lastName is not empty
+        if (lastName.compareTo("") == 0) {
           errors.put("lastName","Please enter your last name");
           lastName="";
           allOk=false;
         }
-        if (password.equals("") ) {
-          errors.put("password","Please enter a valid password");
+
+        found = 0; //reset found
+        //check lastName for numbers or punctuation. stop at 2 to allow spaces
+        for(i=0; i<2; i++){
+            if(lastName.matches(REGEX[i])){
+                found++;
+            }
+
+            if(found>0){
+                errors.put("lastName", "Last Name must not contain numbers or punctuation");
+                lastName="";
+                allOk=false;
+                break;
+            }
+        }
+
+        //check that password is not empty
+        if (password.compareTo("") == 0) {
+          errors.put("password","Please enter a password");
           password="";
           allOk=false;
         }
-        if (!password.equals("") && (confirm_pw.equals("") || !password.equals(confirm_pw))) {
-          errors.put("confirm_pw","Please confirm your password");
+
+        //check that password is between 6-10 characters
+        if (password.length() < 6 || password.length() > 10) {
+          errors.put("password","Password must be between 6-10 characters long");
+          password="";
+          allOk=false;
+        }
+
+        found = 0; //reset found
+        //check password for spaces or punctuation. start at 1 to allow numbers
+        for(i=1; i<3; i++){
+            if(password.matches(REGEX[i])){
+                found++;
+            }
+
+            if(found>0){
+                errors.put("password", "Password must not contain spaces or punctuation");
+                password="";
+                allOk=false;
+                break;
+            }
+        }
+
+        //check that comfirm_pw is not empty
+        if (confirm_pw.compareTo("") == 0) {
+          errors.put("confirm_pw", "Please confirm your password");
+          confirm_pw="";
+          allOk=false;
+        }
+
+        //check that passwords match
+        if (confirm_pw.compareTo(password) != 0){
+            errors.put("confirm_pw", "Passwords do not match");
           confirm_pw="";
           allOk=false;
         }
@@ -167,4 +257,28 @@ public class User {
         return (errorMsg == null) ? "":errorMsg;
       }
 
+//      public static void main(String[] args){
+//        String[] REGEX = new String[3];
+//        REGEX[0] = ".*[0-9].*"; //any digit
+//        REGEX[1] = ".*[\\p{Punct}].*"; //any punctuation
+//        REGEX[2] = ".*[\\p{Space}].*"; //any whitespace
+//
+//        String check = "De Shaun";
+//
+//        int found = 0;
+//
+//        for(int i=0; i<2; i++){
+//            if(check.matches(REGEX[i])){
+//                found++;
+//            }
+//
+//            if(found>0){
+//                System.out.println("reject fname");
+//                break;
+//            }
+//        }
+//        if(found==0){
+//            System.out.println("approve fname");
+//        }
+//      }
 }
