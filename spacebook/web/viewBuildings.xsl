@@ -29,8 +29,8 @@
                 <div class="main">
                     <div class="navigation">
                         <a href="index.jsp">Home</a>
-                        <a href="signin.jsp">Login</a>
-                        <a href="signup.jsp">Register</a>
+                        <a href="login.jsp">Login</a>
+                        <a href="register.jsp">Register</a>
                     </div><!-- end:navigation -->
                     <div class="padder">
                         <table class="buildingTable" cell-spacing="1">

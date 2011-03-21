@@ -106,7 +106,7 @@ public class User {
     public boolean checkUser(String userName) throws ClassNotFoundException, SQLException{
         spaceDBAdapter dbAdapter = new spaceDBAdapter("Users");
 
-        return dbAdapter.valueExists("Users", userName);
+        return dbAdapter.valueExists(userName);
     }
 
     public boolean processSignUp() throws ClassNotFoundException, SQLException{
@@ -122,8 +122,6 @@ public class User {
 
     public boolean processLogin() throws ClassNotFoundException, SQLException{
         if(isValidLogin()){
-            spaceDBAdapter dbAdapter = new spaceDBAdapter("Users");
-            //dbAdapter.insertUser(userName, firstName, lastName, password);
             return true;
         }
         else{
@@ -200,6 +198,14 @@ public class User {
                 allOk=false;
                 break;
             }
+        }
+
+        //check if the userName/password combo given matches one in the DB
+        spaceDBAdapter dbAdapter = new spaceDBAdapter("Users");
+        if(!dbAdapter.checkUsernamePasswordCombo(userName, password)){
+            errors.put("combo", "Password/UserName combination not found");
+            password="";
+            allOk=false;
         }
 
         return allOk;

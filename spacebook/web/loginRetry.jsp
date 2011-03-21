@@ -35,6 +35,12 @@
                                 <input id="password" name="password" size="30" type="password" maxlength="10" value="<%=user.getPassword()%>" />
                                 <span style="color:#FF0000;"><%=user.getErrorMsg("password")%></span>
                             </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span style="color:#FF0000;"><%=user.getErrorMsg("combo")%></span>
+                            </td>
+                        </tr>
                         <tr>
                             <td><input type="submit" value="Sign up!" /></td>
                         </tr>

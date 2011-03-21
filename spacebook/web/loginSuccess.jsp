@@ -10,7 +10,6 @@
 <html>
     <%@include file="WEB-INF/jspf/tagsAndData.jspf"%>
     <jsp:useBean id="user" class="spaceBeans.User" scope="request" />
-
     <sql:query var="userData" dataSource="${dataSource}">
         select * from Users where userName = '${user.userName}'
     </sql:query>
