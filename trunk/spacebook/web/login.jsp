@@ -12,13 +12,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Registration Page. Create an account on spacebook!</title>
+        <title>Login to spacebook!</title>
         <%@include file="WEB-INF/jspf/header.jspf" %>
 
         <div class="content">
             <h2>Sign In</h2>
             <div class="formbox">
-                <form name="login" action="processLogin.jsp" method="post" onSubmit=""validateForm()>
+                <form name="login" action="processLogin.jsp" method="post">
                     <table>
                         <tr>
                             <td>Username:<br /><input id="userName" name="userName" size="30" type="text" maxlength="30" value="" /></td>

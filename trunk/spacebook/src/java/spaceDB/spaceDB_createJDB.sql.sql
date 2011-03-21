@@ -5,7 +5,7 @@ CREATE TABLE Users(
     userName varchar(15) NOT NULL,
     firstName varchar(30),
     lastName varchar(30),
-    password varchar(10),
+    password varchar(32),
     groupID integer,
     CONSTRAINT ukcUsers UNIQUE (userName)
 );
