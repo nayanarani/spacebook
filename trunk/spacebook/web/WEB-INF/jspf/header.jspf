@@ -29,7 +29,7 @@
                         <a href="logout.jsp"><c:out value="Logout" /></a>
                         <a href='myAccount.jsp'><c:out value="View Profile" /></a>
                         <a href="groups.jsp"><c:out value="View Groups" /></a>
-                        <a href="buildings.xml?userName=<c:out value='${user.userName}' />"><c:out value="View Buildings" /></a>
+                        <a href="buildings.xml"><c:out value="View Buildings" /></a>
                         <a href="book.jsp"><c:out value="Book a Space" /></a>
                     </c:otherwise>
                 </c:choose>

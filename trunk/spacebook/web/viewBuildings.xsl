@@ -36,12 +36,11 @@
                         <table class="buildingTable" cell-spacing="1">
                             <thead>
                                 <tr>
-                                    <th colspan="3">LIST OF BUILDINGS ON CAMPUS</th>
+                                    <th colspan="2">LIST OF BUILDINGS ON CAMPUS</th>
                                 </tr>
                                 <tr>
                                     <th>Building Name</th>
                                     <th>Building Code</th>
-                                    <th>Rooms</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -49,7 +48,6 @@
                                     <tr>
                                         <td><xsl:value-of select="name" /></td>
                                         <td><xsl:value-of select="buildingCode" /></td>
-                                        <td><xsl:value-of select="rooms" /></td>
                                     </tr>
                                 </xsl:for-each>
                             </tbody>

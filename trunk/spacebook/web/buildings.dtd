@@ -3,9 +3,7 @@
     DTD to define the buildings.xml file
 -->
 <!ELEMENT buildings (building+)>
-<!ELEMENT building (name, buildingCode, rooms+)>
+<!ELEMENT building (name, buildingCode)>
 <!ATTLIST building id CDATA #REQUIRED>
 <!ELEMENT name (#PCDATA)>
 <!ELEMENT buildingCode (#PCDATA)>
-<!ELEMENT rooms (number)>
-<!ELEMENT number (#PCDATA)>
