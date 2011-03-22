@@ -1,37 +1,37 @@
 <%-- 
     Document   : myAccount
     Created on : 18-Mar-2011, 5:56:35 PM
-    Author     : WestfallHome
+    Author     : Steve Westfall
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
+<%@include file="WEB-INF/jspf/tagsAndData.jspf"%>
 <html>
-    <%@include file="WEB-INF/jspf/tagsAndData.jspf"%>
-    <jsp:useBean id="user" class="spaceBeans.User" scope="session"/>
-
-    <sql:query var="userData" dataSource="${applicationScope.dataSource}">
-        select * from Users where userName = '${user.userName}'
-    </sql:query>
-
-        <title>${user.userName} myAccount - spacebook</title>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <jsp:useBean id="user" class="spaceBeans.User" scope="session"/>
+        <c:if test="${user.userName == null || user.userName ==''}">
+            <jsp:forward page="login.jsp" />
+        </c:if>
+        <title><c:out value="${user.userName} myAccount - spacebook" /></title>
     <%@include file="WEB-INF/jspf/header.jspf" %>
-    
-        <head>
+
     <div class="content">
-        <h2>Hello </h2>
+        <h2><c:out value="Hello ${user.firstName}" /></h2>
+        <h3><c:out value="You are logged in as: ${user.userName}" /></h3>
         <table>
-            <c:forEach var="row" items="${userData.rows}">
-            <tr>
-                <td>First Name:</td>
-                <td>${row.firstName}</td>
-            </tr>
-            <tr>
-                <td>Last Name:</td>
-                <td>${row.lastName}</td>
-            </tr>
-            </c:forEach>
+            <tbody>
+                <tr>
+                    <td>
+                        <c:out value="First Name: ${user.firstName}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <c:out value="Last Name: ${user.lastName}" />
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div><!-- end:content -->
     <%@include file="WEB-INF/jspf/footer.jspf" %>

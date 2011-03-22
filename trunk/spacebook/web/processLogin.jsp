@@ -4,11 +4,11 @@
     Author     : WestfallHome
 --%>
 
-<jsp:useBean id="user" class="spaceBeans.User" scope="request">
-    <jsp:setProperty name="user" property="*"/>
+<jsp:useBean id="user_req" class="spaceBeans.User" scope="request">
+    <jsp:setProperty name="user_req" property="*"/>
 </jsp:useBean>
 <%
-   if (user.processLogin()) {
+   if (user_req.processLogin()) {
 %>
     <jsp:forward page="loginSuccess.jsp"/>
 <%
