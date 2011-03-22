@@ -5,11 +5,11 @@
 --%>
 
 
-<jsp:useBean id="user" class="spaceBeans.User" scope="request">
-    <jsp:setProperty name="user" property="*"/>
+<jsp:useBean id="user_req" class="spaceBeans.User" scope="request">
+    <jsp:setProperty name="user_req" property="*"/>
 </jsp:useBean>
 <%
-   if (user.processSignUp()) {
+   if (user_req.processSignUp()) {
 %>
     <jsp:forward page="signUpSuccess.jsp"/>
 <%

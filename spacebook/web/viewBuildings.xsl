@@ -12,9 +12,6 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
     <xsl:output method="html"/>
 
-    <!-- TODO customize transformation rules 
-         syntax recommendation http://www.w3.org/TR/xslt 
-    -->
     <xsl:template match="/">
         <html>
             <head>
@@ -29,8 +26,11 @@
                 <div class="main">
                     <div class="navigation">
                         <a href="index.jsp">Home</a>
-                        <a href="login.jsp">Login</a>
-                        <a href="register.jsp">Register</a>
+                        <a href="logout.jsp">Logout</a>
+                        <a href="myAccount.jsp">View Profile</a>
+                        <a href="groups.jsp">View Groups</a>
+                        <a href="buildings.xml">View Buildings</a>
+                        <a href="book.jsp">Book a Space</a>
                     </div><!-- end:navigation -->
                     <div class="padder">
                         <table class="buildingTable" cell-spacing="1">
