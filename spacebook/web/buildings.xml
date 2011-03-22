@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE buildings SYSTEM "buildings.dtd">
-<?xml-stylesheet type="text/xsl" href="viewBuildings.xsl"?>
+<!-- <?xml-stylesheet type="text/xsl" href="viewBuildings.xsl"?> -->
 
 <!--
     Document   : buildings.xml
@@ -13,121 +13,331 @@
     <building id="1">
         <name>Alumni Hall</name>
         <buildingCode>AH</buildingCode>
+        <rooms>
+            <number>101</number>
+            <number>102</number>
+            <number>103</number>
+            <number>201</number>
+            <number>202</number>
+        </rooms>
     </building>
     <building id="2">
         <name>Biology Building</name>
         <buildingCode>BB</buildingCode>
+        <rooms>
+            <number>101</number>
+            <number>102</number>
+            <number>103</number>
+            <number>201</number>
+            <number>202</number>
+        </rooms>
     </building>
     <building id="3">
         <name>Cantebury College</name>
         <buildingCode>CC</buildingCode>
+        <rooms>
+            <number>101</number>
+            <number>102</number>
+            <number>103</number>
+            <number>201</number>
+            <number>202</number>
+        </rooms>
     </building>
     <building id="4">
         <name>Cody Hall</name>
         <buildingCode>CH</buildingCode>
+        <rooms>
+            <number>101</number>
+            <number>102</number>
+            <number>103</number>
+            <number>201</number>
+            <number>202</number>
+        </rooms>
     </building>
     <building id="5">
         <name>Chrysler Hall North</name>
         <buildingCode>CN</buildingCode>
+        <rooms>
+            <number>101</number>
+            <number>102</number>
+            <number>103</number>
+            <number>201</number>
+            <number>202</number>
+        </rooms>
     </building>
     <building id="6">
         <name>Clark Residence</name>
         <buildingCode>CR</buildingCode>
+        <rooms>
+            <number>101</number>
+            <number>102</number>
+            <number>103</number>
+            <number>201</number>
+            <number>202</number>
+        </rooms>
     </building>
     <building id="7">
         <name>Chrysler Hall South</name>
         <buildingCode>CS</buildingCode>
+        <rooms>
+            <number>101</number>
+            <number>102</number>
+            <number>103</number>
+            <number>201</number>
+            <number>202</number>
+        </rooms>
     </building>
     <building id="8">
         <name>Chrysler Tower</name>
         <buildingCode>CT</buildingCode>
+        <rooms>
+            <number>101</number>
+            <number>102</number>
+            <number>103</number>
+            <number>201</number>
+            <number>202</number>
+        </rooms>
     </building>
     <building id="9">
         <name>Drama Building</name>
         <buildingCode>DB</buildingCode>
+        <rooms>
+            <number>101</number>
+            <number>102</number>
+            <number>103</number>
+            <number>201</number>
+            <number>202</number>
+        </rooms>
     </building>
     <building id="10">
         <name>Jackman Dramatic Art Centre</name>
         <buildingCode>DC</buildingCode>
+        <rooms>
+            <number>101</number>
+            <number>102</number>
+            <number>103</number>
+            <number>201</number>
+            <number>202</number>
+        </rooms>
     </building>
     <building id="11">
         <name>Dilon Hall</name>
         <buildingCode>DH</buildingCode>
+        <rooms>
+            <number>101</number>
+            <number>102</number>
+            <number>103</number>
+            <number>201</number>
+            <number>202</number>
+        </rooms>
     </building>
     <building id="12">
         <name>Neale Education Building</name>
         <buildingCode>ED</buildingCode>
+        <rooms>
+            <number>101</number>
+            <number>102</number>
+            <number>103</number>
+            <number>201</number>
+            <number>202</number>
+        </rooms>
     </building>
     <building id="13">
         <name>Essex Hall</name>
         <buildingCode>EH</buildingCode>
+        <rooms>
+            <number>101</number>
+            <number>102</number>
+            <number>103</number>
+            <number>201</number>
+            <number>202</number>
+        </rooms>
     </building>
     <building id="14">
         <name>Electa Hall</name>
         <buildingCode>EH</buildingCode>
+        <rooms>
+            <number>101</number>
+            <number>102</number>
+            <number>103</number>
+            <number>201</number>
+            <number>202</number>
+        </rooms>
     </building>
     <building id="15">
         <name>Erie Hall</name>
         <buildingCode>EH</buildingCode>
+        <rooms>
+            <number>101</number>
+            <number>102</number>
+            <number>103</number>
+            <number>201</number>
+            <number>202</number>
+        </rooms>
     </building>
     <building id="16">
         <name>HK Building</name>
         <buildingCode>HK</buildingCode>
+        <rooms>
+            <number>101</number>
+            <number>102</number>
+            <number>103</number>
+            <number>201</number>
+            <number>202</number>
+        </rooms>
     </building>
     <building id="17">
         <name>Ianni Law Building</name>
         <buildingCode>LB</buildingCode>
+        <rooms>
+            <number>101</number>
+            <number>102</number>
+            <number>103</number>
+            <number>201</number>
+            <number>202</number>
+        </rooms>
     </building>
     <building id="18">
         <name>LeBel Building</name>
         <buildingCode>LE</buildingCode>
+        <rooms>
+            <number>101</number>
+            <number>102</number>
+            <number>103</number>
+            <number>201</number>
+            <number>202</number>
+        </rooms>
     </building>
     <building id="19">
         <name>Sir Wilfred Laurier Hall</name>
         <buildingCode>LH</buildingCode>
+        <rooms>
+            <number>101</number>
+            <number>102</number>
+            <number>103</number>
+            <number>201</number>
+            <number>202</number>
+        </rooms>
     </building>
     <building id="20">
         <name>Leddy Library</name>
         <buildingCode>LL</buildingCode>
+        <rooms>
+            <number>101</number>
+            <number>102</number>
+            <number>103</number>
+            <number>201</number>
+            <number>202</number>
+        </rooms>
     </building>
     <building id="21">
         <name>Lambton Tower</name>
         <buildingCode>LT</buildingCode>
+        <rooms>
+            <number>101</number>
+            <number>102</number>
+            <number>103</number>
+            <number>201</number>
+            <number>202</number>
+        </rooms>
     </building>
     <building id="22">
         <name>Sir John A MacDonald Hall</name>
         <buildingCode>MC</buildingCode>
+        <rooms>
+            <number>101</number>
+            <number>102</number>
+            <number>103</number>
+            <number>201</number>
+            <number>202</number>
+        </rooms>
     </building>
     <building id="23">
         <name>Memorial Hall</name>
         <buildingCode>MH</buildingCode>
+        <rooms>
+            <number>101</number>
+            <number>102</number>
+            <number>103</number>
+            <number>201</number>
+            <number>202</number>
+        </rooms>
     </building>
     <building id="24">
         <name>Music Building</name>
         <buildingCode>MU</buildingCode>
+        <rooms>
+            <number>101</number>
+            <number>102</number>
+            <number>103</number>
+            <number>201</number>
+            <number>202</number>
+        </rooms>
     </building>
     <building id="25">
         <name>Odette Building</name>
         <buildingCode>OB</buildingCode>
+        <rooms>
+            <number>101</number>
+            <number>102</number>
+            <number>103</number>
+            <number>201</number>
+            <number>202</number>
+        </rooms>
     </building>
     <building id="26">
         <name>St. Denis Centre</name>
         <buildingCode>SD</buildingCode>
+        <rooms>
+            <number>101</number>
+            <number>102</number>
+            <number>103</number>
+            <number>201</number>
+            <number>202</number>
+        </rooms>
     </building>
     <building id="27">
         <name>Toldo Health Education Centre</name>
         <buildingCode>TH</buildingCode>
+        <rooms>
+            <number>101</number>
+            <number>102</number>
+            <number>103</number>
+            <number>201</number>
+            <number>202</number>
+        </rooms>
     </building>
     <building id="28">
         <name>C.A.W. Centre</name>
         <buildingCode>UC</buildingCode>
+        <rooms>
+            <number>101</number>
+            <number>102</number>
+            <number>103</number>
+            <number>201</number>
+            <number>202</number>
+        </rooms>
     </building>
     <building id="29">
         <name>Vanier Hall</name>
         <buildingCode>VH</buildingCode>
+        <rooms>
+            <number>101</number>
+            <number>102</number>
+            <number>103</number>
+            <number>201</number>
+            <number>202</number>
+        </rooms>
     </building>
     <building id="30">
         <name>West Library</name>
         <buildingCode>WL</buildingCode>
+        <rooms>
+            <number>101</number>
+            <number>102</number>
+            <number>103</number>
+            <number>201</number>
+            <number>202</number>
+        </rooms>
     </building>
 </buildings>
