@@ -5,6 +5,10 @@
 --%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@include file="WEB-INF/jspf/tagsAndData.jspf"%>
+<jsp:useBean id="user" class="spaceBeans.User" scope="session"/>
+        <c:if test="${user.userName == null || user.userName ==''}">
+            <jsp:forward page="login.jsp" />
+        </c:if>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
