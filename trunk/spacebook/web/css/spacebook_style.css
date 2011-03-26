@@ -93,3 +93,10 @@ text-decoration: none;
     width: 100%;
     position: relative;
 }
+
+.groupContent{
+    float:left;
+    display:inline;
+    min-width:200px;
+    min-height:200px;
+}
