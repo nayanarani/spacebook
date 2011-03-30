@@ -1,7 +1,7 @@
 <%-- 
     Document   : logout
     Created on : 21-Mar-2011, 3:31:01 PM
-    Author     : WestfallHome
+    Author     : Steve Westfall
 --%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
