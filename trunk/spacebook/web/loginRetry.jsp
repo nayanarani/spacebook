@@ -22,25 +22,25 @@
                         <tr>
                             <td>
                                 <c:out value="Username:" /><br />
-                                <input id="userName" name="userName" size="30" type="text" maxlength="30" value="<c:out value='user_req.getUserName' />" />
-                                <span style='color:#FF0000;'><c:out value="${user_req.getErrorMsg.userName}" /></span>
+                                <input id="userName" name="userName" size="30" type="text" maxlength="30" value="<%=user_req.getUserName() %>" />
+                                <span style='color:#FF0000;'><%=user_req.getErrorMsg("userName") %></span>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <c:out value="Password:<br />" />
+                                <c:out value="Password:" /><br />
                                 <input id="password" name="password" size="30" type="password" maxlength="10" value="<%=user_req.getPassword()%>" />
-                                <span style='color:#FF0000;'><c:out value="${user_req.getErrorMsg.password}" /></span>
+                                <span style='color:#FF0000;'><%=user_req.getErrorMsg("password") %></span>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <span style='color:#FF0000;'><c:out value="${user_req.getErrorMsg.combo}" /></span>
+                                <span style='color:#FF0000;'><%=user_req.getErrorMsg("combo") %></span>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <input type="submit" value="Sign up!" />
+                                <input type="submit" value="Login!" />
                             </td>
                         </tr>
                     </tbody>

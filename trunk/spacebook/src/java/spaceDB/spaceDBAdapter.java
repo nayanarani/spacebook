@@ -165,6 +165,11 @@ public class spaceDBAdapter {
         }catch(Exception e){}
     }
 
+    /**
+     * This functions hashes passwords before insert
+     * @param password
+     * @return
+     */
     private String hashPassword(String password) {
         String hashword = null;
         try {
@@ -192,5 +197,6 @@ public class spaceDBAdapter {
         while (buffer.length() < length) {
             buffer.insert(0, padChar);
         }
-        return buffer.toString();}
+        return buffer.toString();
+    }
 }
