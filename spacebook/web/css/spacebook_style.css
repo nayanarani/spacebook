@@ -94,9 +94,22 @@ text-decoration: none;
     position: relative;
 }
 
-.groupContent{
-    float:left;
-    display:inline;
-    min-width:200px;
-    min-height:200px;
+.groupTable{
+    width:680px;
+    background-color: #375C91;
+}
+
+.groupTable td{
+    background-color: #FFFFFF;
+    text-align: left;
+    font: normal 16px calibri, arial, tahoma;
+    color: #000000;
+    padding: 3px;
+}
+
+.groupTable th{
+    background-color: #ECECEC;
+    text-align: center;
+    font: bold 20px calibri, arial, tahoma;
+    color: #000000;
 }

@@ -24,14 +24,23 @@
         </c:forEach>
 
         <sql:query var="groupData" dataSource="${dataSource}">
-            SELECT groupName FROM Groups WHERE Groups.groupID IN (SELECT groupID FROM GroupUserXR WHERE GroupUserXR.userID = ${user.userID})
+            SELECT * FROM Groups WHERE Groups.groupID IN (SELECT groupID FROM GroupUserXR WHERE GroupUserXR.userID = ${user.userID}) ORDER BY groupName
         </sql:query>
 
         <sql:query var="groupAdminData" dataSource="${dataSource}">
-            SELECT groupName FROM Groups WHERE adminID = ${user.userID}
+            SELECT * FROM Groups WHERE adminID = ${user.userID} ORDER BY groupName
         </sql:query>
             
         <title><c:out value="${user.userName} myAccount - spacebook" /></title>
+        <script type="text/javascript" language="javascript">
+            function setGroupID(groupID){
+                document.getElementById('groupID').setAttribute("value", groupID);
+            }
+
+            function setGroupIDAdmin(groupID){
+                document.getElementById('groupIDAdmin').setAttribute("value", groupID);
+            }
+        </script>
     <%@include file="WEB-INF/jspf/header.jspf" %>
 
     <div class="content">
@@ -45,22 +54,74 @@
                 <c:out value="None." />
             </c:when>
             <c:otherwise>
-                <c:forEach var="groupRow" items="${groupData.rows}">
-                    <c:out value="${groupRow.groupName}" /><br />
-                </c:forEach>
+                <form name="groupMemberForm" action="leaveGroup.jsp" method="POST">
+                    <table class="groupTable">
+                        <thead>
+                            <th>
+                                <c:out value="Group Name" />
+                            </th>
+                            <th style="width:50px;">
+                                <c:out value="Leave" />
+                            </th>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="groupRow" items="${groupData.rows}">
+                                <tr>
+                                    <td>
+                                        <c:out value="${groupRow.groupName}" />
+                                    </td>
+                                    <td>
+                                        <c:choose>
+                                            <c:when test="${groupRow.adminID == user.userID}">
+                                                <div align="center"><c:out value="Admin" /></div>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <input type="submit" onclick="setGroupID(${groupRow.groupID})" value="Leave Group" />
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                    <input type="hidden" id="groupID" name="groupID" value="" />
+                </form>
             </c:otherwise>
         </c:choose>
-        <h3><c:out value="You currently the Administrator of the following Groups:" /></h3>
+        <h3><c:out value="You are currently the Administrator of the following Groups:" /></h3>
         <c:choose>
             <c:when test="${groupAdminData.rowCount == 0}">
                 <c:out value="None." />
             </c:when>
             <c:otherwise>
-                <c:forEach var="groupAdminRow" items="${groupAdminData.rows}">
-                    <c:out value="${groupAdminRow.groupName}" /><br />
-                </c:forEach>
+                <form name="groupAdminForm" action="deleteGroup.jsp" method="POST">
+                    <table class="groupTable">
+                        <thead>
+                            <th>
+                                <c:out value="Group Name" />
+                            </th>
+                            <th style="width:50px;">
+                                <c:out value="Delete" />
+                            </th>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="groupAdminRow" items="${groupAdminData.rows}">
+                                <tr>
+                                    <td>
+                                        <c:out value="${groupAdminRow.groupName}" />
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Delete Group" onclick="setGroupIDAdmin(${groupAdminRow.groupID})" />
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                    <input type="hidden" id="groupIDAdmin" name="groupID" value="" />
+                </form>
             </c:otherwise>
         </c:choose>
+        
     </div><!-- end:content -->
     <%@include file="WEB-INF/jspf/footer.jspf" %>
 </html>

@@ -14,7 +14,8 @@ CREATE TABLE Groups(
     groupID integer NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     groupName varchar(30),
     adminID integer NOT NULL,
-    CONSTRAINT fkcGroups1 Foreign Key (adminID) references Users(userID)
+    CONSTRAINT fkcGroups1 Foreign Key (adminID) references Users(userID),
+    CONSTRAINT ukcGroups1 UNIQUE (groupName)
 );
 
 ALTER TABLE USERS ADD CONSTRAINT fkcUsers1 FOREIGN KEY (groupID) REFERENCES Groups(groupID);

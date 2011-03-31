@@ -26,6 +26,9 @@ public class spaceDBAdapter {
         this.tableName = tableName;
     }
 
+    public spaceDBAdapter() {
+    }
+
     /**
      * How to load the JDBC driver and obtain a Connection object
      * @return
@@ -109,7 +112,7 @@ public class spaceDBAdapter {
         try{
             Connection con = getConnection();
             Statement stmt = con.createStatement();
-            String userDataSQL = "INSERT INTO USERS(userName, firstName, lastName, password) VALUES('"+uName+"', '"+fName+"', '"+lName+"', '"+hashPassword(password)+"')";
+            String userDataSQL = "INSERT INTO Users(userName, firstName, lastName, password) VALUES('"+uName+"', '"+fName+"', '"+lName+"', '"+hashPassword(password)+"')";
             stmt.executeUpdate(userDataSQL);
         }catch(Exception e){}
     }
@@ -121,27 +124,92 @@ public class spaceDBAdapter {
      * @throws ClassNotFoundException
      * @throws SQLException
      */
-    public void insertGroup(String name, String adminID) throws ClassNotFoundException, SQLException {
+    public void insertGroup(String name, int adminID) throws ClassNotFoundException, SQLException {
         try{
             Connection con = getConnection();
             Statement stmt = con.createStatement();
-            String groupDataSQL = "INSERT INTO GROUPS(name, adminID) VALUES('"+name+"', '"+adminID+"')";
+            String groupDataSQL = "INSERT INTO Groups(groupName, adminID) VALUES('"+name+"', "+adminID+")";
+            stmt.executeUpdate(groupDataSQL);
+            int groupID = getGroupIDOnInsert(name, adminID);
+            insertGroupUserXR(groupID, adminID);
+        }catch(Exception e){}
+    }
+
+    public int getGroupIDOnInsert(String name, int adminID) throws ClassNotFoundException, SQLException {
+        int groupID = 0;
+        try{
+            Connection con = getConnection();
+            Statement stmt = con.createStatement();
+            String groupIDDataSQL = "SELECT groupID FROM Groups WHERE groupName = '"+name+"' AND adminID = "+adminID;
+            ResultSet results = stmt.executeQuery(groupIDDataSQL);
+            while(results.next()){
+                groupID = results.getInt(1);
+            }
+            
+            return groupID;
+        }catch(Exception e){}
+        return groupID;
+    }
+
+    /**
+     * Deletes a group
+     * @param groupID
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
+    public void deleteGroup(int groupID) throws ClassNotFoundException, SQLException {
+        try{
+            deleteGroupUserXRByAdmin(groupID);
+            Connection con = getConnection();
+            Statement stmt = con.createStatement();
+            String groupDataSQL = "DELETE FROM Groups WHERE groupID = "+groupID;
             stmt.executeUpdate(groupDataSQL);
         }catch(Exception e){}
     }
 
     /**
-     * Inserts a record into the GroupUserXR cross reference table
+     * This method inserts a record into the GroupUserXR table
      * @param groupID
      * @param userID
      * @throws ClassNotFoundException
      * @throws SQLException
      */
-    public void insertGroupUserXR(String groupID, String userID) throws ClassNotFoundException, SQLException {
+    public void insertGroupUserXR(int groupID, int userID) throws ClassNotFoundException, SQLException {
         try{
             Connection con = getConnection();
             Statement stmt = con.createStatement();
-            String groupUserDataSQL = "INSERT INTO GROUPUSERXR(groupID, userID) VALUES('"+groupID+"', '"+userID+"')";
+            String groupUserDataSQL = "INSERT INTO GroupUserXR(groupID, userID) VALUES("+groupID+", "+userID+")";
+            stmt.executeUpdate(groupUserDataSQL);
+        }catch(Exception e){}
+    }
+
+    /**
+     * Removes a User from a Group
+     * @param groupID
+     * @param userID
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
+    public void deleteGroupUserXR(int groupID, int userID) throws ClassNotFoundException, SQLException {
+        try{
+            Connection con = getConnection();
+            Statement stmt = con.createStatement();
+            String groupUserDataSQL = "DELETE FROM GroupUserXR WHERE groupID = "+groupID+" AND userID = "+userID;
+            stmt.executeUpdate(groupUserDataSQL);
+        }catch(Exception e){}
+    }
+
+    /**
+     * Deletes all GroupUserXR records for a particular Group
+     * @param groupID
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
+    public void deleteGroupUserXRByAdmin(int groupID) throws ClassNotFoundException, SQLException {
+        try{
+            Connection con = getConnection();
+            Statement stmt = con.createStatement();
+            String groupUserDataSQL = "DELETE FROM GroupUserXR WHERE groupID = "+groupID;
             stmt.executeUpdate(groupUserDataSQL);
         }catch(Exception e){}
     }
@@ -156,11 +224,11 @@ public class spaceDBAdapter {
      * @throws ClassNotFoundException
      * @throws SQLException
      */
-    public void insertBooking(String timeslotID, String bookingDate, boolean isBooked, String roomID, String groupID) throws ClassNotFoundException, SQLException {
+    public void insertBooking(int timeslotID, String bookingDate, boolean isBooked, int roomID, int groupID) throws ClassNotFoundException, SQLException {
         try{
             Connection con = getConnection();
             Statement stmt = con.createStatement();
-            String bookingDataSQL = "INSERT INTO BOOKINGS(timeslotID, bookingDate, isBooked, roomID, groupID) VALUES('"+timeslotID+"', '"+bookingDate+", "+isBooked+", "+roomID+", "+groupID+"')";
+            String bookingDataSQL = "INSERT INTO BOOKINGS(timeslotID, bookingDate, isBooked, roomID, groupID) VALUES("+timeslotID+", '"+bookingDate+", "+isBooked+", "+roomID+", "+groupID+")";
             stmt.executeUpdate(bookingDataSQL);
         }catch(Exception e){}
     }
@@ -199,4 +267,5 @@ public class spaceDBAdapter {
         }
         return buffer.toString();
     }
+
 }
