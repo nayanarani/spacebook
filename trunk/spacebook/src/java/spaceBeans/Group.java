@@ -5,10 +5,13 @@
 
 package spaceBeans;
 
+import java.sql.SQLException;
+import spaceDB.spaceDBAdapter;
+
 public class Group {
 
     private int groupID;
-    private String name;
+    private String groupName;
     private int adminID;
 
     /**
@@ -17,9 +20,9 @@ public class Group {
      * @param name
      * @param adminID
      */
-    public Group(int groupID, String name, int adminID) {
+    public Group(int groupID, String groupName, int adminID) {
         this.groupID = groupID;
-        this.name = name;
+        this.groupName = groupName;
         this.adminID = adminID;
     }
 
@@ -27,6 +30,7 @@ public class Group {
      * Empty Constructor: Used to initialize a Group bean without setting any member variables
      */
     public Group() {
+        this.groupName = "";
     }
 
     /**
@@ -49,16 +53,16 @@ public class Group {
      * Get the value of name
      * @return the value of name
      */
-    public String getName() {
-        return name;
+    public String getGroupName() {
+        return groupName;
     }
 
     /**
      * Set the value of name
      * @param name new value of name
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
     }
 
     /**
@@ -77,4 +81,40 @@ public class Group {
         this.groupID = groupID;
     }
 
+    /**
+     * Adds a User to a Group
+     * @param userID
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
+    public void joinGroup(int userID) throws ClassNotFoundException, SQLException{
+        spaceDBAdapter dbAdapter = new spaceDBAdapter();
+        dbAdapter.insertGroupUserXR(groupID, userID);
+    }
+
+    /**
+     * Removes a User from a Group
+     * @param userID
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
+    public void leaveGroup(int userID) throws ClassNotFoundException, SQLException{
+        spaceDBAdapter dbAdapter = new spaceDBAdapter();
+        dbAdapter.deleteGroupUserXR(groupID, userID);
+    }
+
+    /**
+     * Let's an Admin of a Group delete the Group
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
+    public void deleteGroupByAdmin() throws ClassNotFoundException, SQLException{
+        spaceDBAdapter dbAdapter = new spaceDBAdapter();
+        dbAdapter.deleteGroup(groupID);
+    }
+
+    public void createGroup(int userID)throws ClassNotFoundException, SQLException{
+        spaceDBAdapter dbAdapter = new spaceDBAdapter();
+        dbAdapter.insertGroup(groupName, userID);
+    }
 }
