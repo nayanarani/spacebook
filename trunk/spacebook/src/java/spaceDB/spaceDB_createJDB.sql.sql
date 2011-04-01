@@ -22,7 +22,7 @@ ALTER TABLE USERS ADD CONSTRAINT fkcUsers1 FOREIGN KEY (groupID) REFERENCES Grou
 
 CREATE TABLE Buildings(
     buildingID integer NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    buidingName varchar(30)
+    buildingName varchar(30)
 );
 
 CREATE TABLE Rooms(
