@@ -16,6 +16,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
@@ -24,33 +25,44 @@ import org.xml.sax.SAXException;
  * @author Benjamin
  */
 public class insertBuildings {
-    private String buildings = "http://localhost:8080/spacebook/buildings.xml";
+    private String buildings = "C:\\Users\\WestfallHome\\Documents\\NetBeansProjects\\spacebook\\web\\buildings.xml"; //this must be the path on your machine to buildings.xml
     private String entityElementsName = "buildings";
     private Document dom;
-    private spaceDB.spaceDBAdapter db = new spaceDB.spaceDBAdapter();
+    private spaceDBAdapter db = new spaceDBAdapter();
 
     public void init() throws IOException, ParserConfigurationException, SAXException {
         try {
             PreparedStatement pstmt = null;
-            String insertQuery = "INSERT INTO BUILDINGS(buildingID, buildingName) VALUES(?, ?)";
-            
+            String insertQuery = "INSERT INTO BUILDINGS(buildingName) VALUES(?)";
             dom = getXMLDoc(buildings);
             NodeList records = dom.getElementsByTagName(entityElementsName);
             Connection con = db.getConnection();
             pstmt = con.prepareStatement(insertQuery);
 
             for (int i = 0; i < records.getLength(); i++) {
-                int id = 0;
                 String name = "";
 
-                Element record = (Element) records.item(i);
+                Element root = (Element) records.item(i); //this gets the root node: buildings
+                NodeList building = root.getChildNodes(); //this creates the list of building nodes
 
-                id = Integer.parseInt(record.getAttribute("id"));
-                name = record.getFirstChild().getNodeValue();
+               for (int j = 0; j < building.getLength(); j++) {
+                    if (building.item(j).getNodeType() == Node.ELEMENT_NODE) { //checks to make sure we only deal with ELEMENT NODES
 
-                pstmt.setInt(1, id);
-                pstmt.setString(2, name);
-                pstmt.execute();
+                        NodeList buildingInfo = building.item(j).getChildNodes(); //this creates the list of building properties: name, buildingCode
+
+                        for( int k=0; k < buildingInfo.getLength(); k++){
+
+                            if (buildingInfo.item(k).getNodeType() == Node.ELEMENT_NODE) { //checks to make sure we only deal with ELEMENT NODES
+                                if(buildingInfo.item(k).getNodeName().compareTo("name") == 0){ //when we find name elements, get their text value and add it to pstmt
+                                    name = buildingInfo.item(k).getTextContent();
+                                    pstmt.setString(1, name);
+                                    pstmt.execute();
+                                }
+                            }
+                        }
+                    }
+                }
+
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(insertBuildings.class.getName()).log(Level.SEVERE, null, ex);
