@@ -22,7 +22,7 @@
             }
 
             function checkForm(){
-                var name = document.getElementById('groupName').getAttribute('value');
+                var name = document.getElementById('groupName').value;
                 if(name == '' || name == null){
                     alert('Please enter a group name.');
                     return false;
