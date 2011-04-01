@@ -24,7 +24,7 @@ import org.xml.sax.SAXException;
  * @author Benjamin
  */
 public class insertBuildings {
-    private String buildings = "localhost/spacebook/buildings.xml";
+    private String buildings = "http://localhost:8080/spacebook/buildings.xml";
     private String entityElementsName = "buildings";
     private Document dom;
     private spaceDB.spaceDBAdapter db = new spaceDB.spaceDBAdapter();
@@ -40,15 +40,15 @@ public class insertBuildings {
             pstmt = con.prepareStatement(insertQuery);
 
             for (int i = 0; i < records.getLength(); i++) {
-                String id = "";
+                int id = 0;
                 String name = "";
 
                 Element record = (Element) records.item(i);
 
-                id = record.getAttribute("id");
+                id = Integer.parseInt(record.getAttribute("id"));
                 name = record.getFirstChild().getNodeValue();
 
-                pstmt.setString(1, id);
+                pstmt.setInt(1, id);
                 pstmt.setString(2, name);
                 pstmt.execute();
             }
@@ -71,5 +71,10 @@ public class insertBuildings {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = dbf.newDocumentBuilder();
         return  db.parse(fileName);
+    }
+
+    public static void main(String[] args) throws Exception {
+        insertBuildings ib = new insertBuildings();
+        ib.init();
     }
 }
