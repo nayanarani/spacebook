@@ -1,4 +1,4 @@
--- this script creates some fake test users for our DB
+-- creates some fake test users for our DB
 -- for simplicity's sake I used the same hash for all of these fake users passwords
 -- password:123456 = e10adc3949ba59abbe56e057f20f883e
 
