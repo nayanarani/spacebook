@@ -2,16 +2,19 @@
  * This class will create beans that will represent a Booking
  * @author Steve Westfall
  */
-
 package spaceBeans;
+
+import java.util.Date;
 
 public class Booking {
 
     private int bookingID;
     private int timeSlotID;
+    private String bookingDate;
+    private int buildingID;
     private int roomID;
     private int groupID;
-    private boolean booked;
+    private String booked;
 
     /**
      * Constructor: Used to initialize a Booking bean
@@ -21,9 +24,11 @@ public class Booking {
      * @param groupID
      * @param booked
      */
-    public Booking(int bookingID, int timeSlotID, int roomID, int groupID, boolean booked) {
+    public Booking(int bookingID, int timeSlotID,  String bookingDate, int buildingID, int roomID, int groupID, String booked) {
         this.bookingID = bookingID;
         this.timeSlotID = timeSlotID;
+        this.bookingDate = bookingDate;
+        this.buildingID = buildingID;
         this.roomID = roomID;
         this.groupID = groupID;
         this.booked = booked;
@@ -33,13 +38,15 @@ public class Booking {
      * Empty Constructor: Used to Initialize a Booking bean without setting any member variables
      */
     public Booking() {
+        this.booked = "";
+        this.bookingDate = "";
     }
 
     /**
      * Get the value of booked
      * @return the value of booked
      */
-    public boolean isBooked() {
+    public String getBooked() {
         return booked;
     }
 
@@ -47,9 +54,10 @@ public class Booking {
      * Set the value of booked
      * @param booked new value of booked
      */
-    public void setBooked(boolean booked) {
+    public void setBooked(String booked) {
         this.booked = booked;
     }
+
 
     /**
      * Get the value of groupID
@@ -68,6 +76,22 @@ public class Booking {
     }
 
     /**
+     * Get the value of buildingID
+     * @return the value of buildingID
+     */
+    public int getBuildingID() {
+        return buildingID;
+    }
+
+    /**
+     * Set the value of buildingID
+     * @param buildingID new value of buildingID
+     */
+    public void setBuildingID(int buildingID) {
+        this.buildingID = buildingID;
+    }
+
+    /**
      * Get the value of roomID
      * @return the value of roomID
      */
@@ -82,6 +106,23 @@ public class Booking {
     public void setRoomID(int roomID) {
         this.roomID = roomID;
     }
+
+    /**
+     * Get the value of bookingDate
+     * @return the value of bookingDate
+     */
+    public String getBookingDate() {
+        return bookingDate;
+    }
+
+    /**
+     * Set the value of bookingDate
+     * @param bookingDate new value of bookingDate
+     */
+    public void setBookingDate(String bookingDate) {
+        this.bookingDate = bookingDate;
+    }
+
 
     /**
      * Get the value of timeSlotID
@@ -114,5 +155,4 @@ public class Booking {
     public void setBookingID(int bookingID) {
         this.bookingID = bookingID;
     }
-
 }

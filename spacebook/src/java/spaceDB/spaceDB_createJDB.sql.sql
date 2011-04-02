@@ -43,13 +43,15 @@ CREATE TABLE Timeslots(
 CREATE TABLE Bookings(
     bookingID integer NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     timeslotID integer,
-    bookingDate DATE,
-    isBooked varchar(2) DEFAULT '0',
+    bookingDate varchar(11),
+    booked varchar(2) DEFAULT 'N',
+    buildingID integer,
     roomID integer NOT NULL,
     groupID integer,
     CONSTRAINT fkcBookings1 Foreign Key (timeslotID) references Timeslots(timeslotID),
-    CONSTRAINT fkcBookings2 Foreign Key (roomID) references Rooms(roomID),
-    CONSTRAINT fkcBookings3 Foreign Key (groupID) references Groups(groupID)
+    CONSTRAINT fkcBookings2 Foreign Key (buildingID) references Buildings(buildingID),
+    CONSTRAINT fkcBookings3 Foreign Key (roomID) references Rooms(roomID),
+    CONSTRAINT fkcBookings4 Foreign Key (groupID) references Groups(groupID)
 );
 
 CREATE TABLE GroupUserXR(
