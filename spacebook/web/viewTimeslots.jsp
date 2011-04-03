@@ -7,7 +7,6 @@
 <%@ page import = "java.util.Date"%>
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="java.text.ParseException"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@include file="WEB-INF/jspf/tagsAndData.jspf"%>
 
 <jsp:useBean id="book_req" class="spaceBeans.Booking" scope="request" />
@@ -45,14 +44,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title><c:out value="spacebook - Schedule for ${buildingName} on ${book_req.bookingDate}" /></title>
         <script type="text/javascript" language="javascript">
-            function setIDs(roomID, timeslotID, groupID){
+            function setIDs(bookingID, roomID, timeslotID, groupID){
+                document.getElementById('bookingID').setAttribute("value", bookingID);
                 document.getElementById('roomID').setAttribute("value", roomID);
                 document.getElementById('timeslotID').setAttribute("value", timeslotID);
                 document.getElementById('groupID').setAttribute("value", groupID);
-            }
-
-            function setBookingID(bookingID){
-                document.getElementById('bookingID').setAttribute("value", bookingID);
             }
         </script>
     <%@include file="WEB-INF/jspf/header.jspf" %>
@@ -113,7 +109,7 @@
                                                     </sql:query>
                                                     <c:forEach var="groupRow" items="${groupInfo.rows}">
                                                         <c:if test="${(bookingRow.groupID == groupRow.groupID && groupRow.adminID == user.userID)}">
-                                                            <input type="submit" id="cancelBooking" name="cancelBooking" value="Cancel Booking" onClick="setBookingID(${bookingRow.bookingID})" />
+                                                            <input type="submit" id="cancelBooking" name="cancelBooking" value="Cancel Booking" onClick="setIDs(${bookingRow.bookingID},0,0,${bookingRow.groupID})" />
                                                         </c:if>
                                                     </c:forEach>
                                                 </c:forEach>
@@ -123,7 +119,7 @@
                                                         SELECT * FROM Groups WHERE groupID = ${book_req.groupID}
                                                     </sql:query>
                                                     <c:forEach var="groupRow" items="${groupInfo.rows}">
-                                                        <input type="submit" id="${groupRow.groupID}" name="${groupRow.groupID}" value="Book for ${groupRow.groupName}" onclick="setIDs(${room.roomID},${timeslot.timeslotID},${groupRow.groupID})" />
+                                                        <input type="submit" id="${groupRow.groupID}" name="${groupRow.groupID}" value="Book for ${groupRow.groupName}" onclick="setIDs(0,${room.roomID},${timeslot.timeslotID},${groupRow.groupID})" />
                                                     </c:forEach>
                                             </c:otherwise>
                                         </c:choose>
@@ -135,6 +131,7 @@
                  </table>
             </c:forEach><!-- end:room forEach -->
                 <input type="hidden" id="bookingID" name="bookingID" value="" />
+                <input type="hidden" id="buildingID" name="buildingID" value="${book_req.buildingID}" />
                 <input type="hidden" id="groupID" name="groupID" value="" />
                 <input type="hidden" id="timeslotID" name="timeslotID" value="" />
                 <input type="hidden" id="roomID" name="roomID" value="" />

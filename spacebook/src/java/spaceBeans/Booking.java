@@ -4,7 +4,9 @@
  */
 package spaceBeans;
 
+import java.sql.SQLException;
 import java.util.Date;
+import spaceDB.spaceDBAdapter;
 
 public class Booking {
 
@@ -14,7 +16,6 @@ public class Booking {
     private int buildingID;
     private int roomID;
     private int groupID;
-    private String booked;
 
     /**
      * Constructor: Used to initialize a Booking bean
@@ -24,40 +25,21 @@ public class Booking {
      * @param groupID
      * @param booked
      */
-    public Booking(int bookingID, int timeSlotID,  String bookingDate, int buildingID, int roomID, int groupID, String booked) {
+    public Booking(int bookingID, int timeSlotID,  String bookingDate, int buildingID, int roomID, int groupID) {
         this.bookingID = bookingID;
         this.timeSlotID = timeSlotID;
         this.bookingDate = bookingDate;
         this.buildingID = buildingID;
         this.roomID = roomID;
         this.groupID = groupID;
-        this.booked = booked;
     }
 
     /**
      * Empty Constructor: Used to Initialize a Booking bean without setting any member variables
      */
     public Booking() {
-        this.booked = "";
         this.bookingDate = "";
     }
-
-    /**
-     * Get the value of booked
-     * @return the value of booked
-     */
-    public String getBooked() {
-        return booked;
-    }
-
-    /**
-     * Set the value of booked
-     * @param booked new value of booked
-     */
-    public void setBooked(String booked) {
-        this.booked = booked;
-    }
-
 
     /**
      * Get the value of groupID
@@ -154,5 +136,25 @@ public class Booking {
      */
     public void setBookingID(int bookingID) {
         this.bookingID = bookingID;
+    }
+
+    /**
+     * Creates a booking in the DB
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
+    public void createBooking() throws ClassNotFoundException, SQLException{
+        spaceDBAdapter dbAdapter = new spaceDBAdapter();
+        dbAdapter.insertBooking(timeSlotID, bookingDate, buildingID, roomID, groupID);
+    }
+
+    /**
+     * Cancels a booking by deleting it from the DB
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
+    public void cancelBooking() throws ClassNotFoundException, SQLException{
+        spaceDBAdapter dbAdapter = new spaceDBAdapter();
+        dbAdapter.deleteBooking(bookingID);
     }
 }

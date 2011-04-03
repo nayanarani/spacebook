@@ -218,17 +218,32 @@ public class spaceDBAdapter {
      * Inserts a record into the Bookings table
      * @param timeslotID
      * @param bookingDate
-     * @param isBooked
+     * @param buildingID
      * @param roomID
      * @param groupID
      * @throws ClassNotFoundException
      * @throws SQLException
      */
-    public void insertBooking(int timeslotID, String bookingDate, boolean isBooked, int roomID, int groupID) throws ClassNotFoundException, SQLException {
+    public void insertBooking(int timeslotID, String bookingDate, int buildingID, int roomID, int groupID) throws ClassNotFoundException, SQLException {
         try{
             Connection con = getConnection();
             Statement stmt = con.createStatement();
-            String bookingDataSQL = "INSERT INTO BOOKINGS(timeslotID, bookingDate, isBooked, roomID, groupID) VALUES("+timeslotID+", '"+bookingDate+", "+isBooked+", "+roomID+", "+groupID+")";
+            String bookingDataSQL = "INSERT INTO BOOKINGS(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES("+timeslotID+", '"+bookingDate+"', "+buildingID+", "+roomID+", "+groupID+")";
+            stmt.executeUpdate(bookingDataSQL);
+        }catch(Exception e){}
+    }
+
+    /**
+     * Deletes a record into the Bookings table
+     * @param bookingID
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
+    public void deleteBooking(int bookingID) throws ClassNotFoundException, SQLException {
+        try{
+            Connection con = getConnection();
+            Statement stmt = con.createStatement();
+            String bookingDataSQL = "DELETE FROM Bookings WHERE bookingID ="+bookingID;
             stmt.executeUpdate(bookingDataSQL);
         }catch(Exception e){}
     }
