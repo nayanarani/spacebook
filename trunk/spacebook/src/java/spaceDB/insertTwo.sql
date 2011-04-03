@@ -530,9 +530,41 @@ values (30,501,10,'N');
 -- insert some bookings for testing purposes
 -- written by: Steve Westfall
 
-INSERT INTO Bookings(timeslotID, bookingDate, booked, buildingID, roomID, groupID) VALUES(3,'APR-02-2011', 'Y', 1, 1, 1);
-INSERT INTO Bookings(timeslotID, bookingDate, booked, buildingID, roomID, groupID) VALUES(4,'APR-02-2011', 'Y', 1, 2, 2);
-INSERT INTO Bookings(timeslotID, bookingDate, booked, buildingID, roomID, groupID) VALUES(4,'APR-03-2011', 'Y', 1, 1, 4);
-INSERT INTO Bookings(timeslotID, bookingDate, booked, buildingID, roomID, groupID) VALUES(5,'APR-04-2011', 'Y', 2, 7, 1);
-INSERT INTO Bookings(timeslotID, bookingDate, booked, buildingID, roomID, groupID) VALUES(1,'APR-06-2011', 'Y', 2, 8, 3);
-INSERT INTO Bookings(timeslotID, bookingDate, booked, buildingID, roomID, groupID) VALUES(6,'APR-06-2011', 'Y', 2, 9, 2);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(3,'APR-07-2011', 1, 1, 1);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(4,'APR-07-2011', 1, 2, 2);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(4,'APR-07-2011', 1, 1, 4);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(5,'APR-07-2011', 2, 7, 1);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(1,'APR-07-2011', 2, 8, 3);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(3,'APR-07-2011', 3, 11, 3);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(4,'APR-07-2011', 3, 12, 5);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(4,'APR-07-2011', 3, 15, 4);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(5,'APR-07-2011', 8, 36, 1);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(1,'APR-07-2011', 8, 37, 3);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(2,'APR-07-2011', 8, 37, 3);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(4,'APR-07-2011', 15, 77, 5);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(5,'APR-07-2011', 15, 77, 5);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(5,'APR-07-2011', 20, 102, 3);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(6,'APR-07-2011', 20, 102, 3);
+
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(6,'APR-08-2011', 2, 9, 2);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(3,'APR-08-2011', 1, 1, 1);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(4,'APR-08-2011', 1, 2, 2);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(4,'APR-08-2011', 12, 62, 4);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(6,'APR-08-2011', 12, 63, 2);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(3,'APR-08-2011', 3, 12, 1);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(4,'APR-08-2011', 3, 12, 2);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(4,'APR-08-2011', 3, 13, 4);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(6,'APR-08-2011', 21, 106, 2);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(3,'APR-08-2011', 21, 107, 1);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(5,'APR-08-2011', 21, 106, 2);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(4,'APR-08-2011', 21, 107, 4);
+
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(5,'APR-09-2011', 1, 1, 1);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(1,'APR-09-2011', 1, 2, 3);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(6,'APR-09-2011', 1, 2, 2);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(4,'APR-09-2011', 1, 1, 1);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(1,'APR-09-2011', 2, 8, 3);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(6,'APR-09-2011', 2, 9, 2);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(5,'APR-09-2011', 2, 7, 1);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(1,'APR-09-2011', 3, 12, 3);
+INSERT INTO Bookings(timeslotID, bookingDate, buildingID, roomID, groupID) VALUES(6,'APR-09-2011', 3, 11, 2);

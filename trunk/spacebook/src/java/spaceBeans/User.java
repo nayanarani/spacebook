@@ -105,8 +105,8 @@ public class User {
 
     public boolean checkUser(String userName) throws ClassNotFoundException, SQLException{
         spaceDBAdapter dbAdapter = new spaceDBAdapter("Users");
-
-        return dbAdapter.valueExists(userName);
+        boolean valueExists = dbAdapter.valueExists(userName);
+        return valueExists;
     }
 
     public boolean processSignUp() throws ClassNotFoundException, SQLException{

@@ -44,7 +44,6 @@ CREATE TABLE Bookings(
     bookingID integer NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     timeslotID integer,
     bookingDate varchar(11),
-    booked varchar(2) DEFAULT 'N',
     buildingID integer,
     roomID integer NOT NULL,
     groupID integer,

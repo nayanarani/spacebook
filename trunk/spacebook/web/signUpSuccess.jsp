@@ -20,6 +20,7 @@
 
         <jsp:useBean id="user" class="spaceBeans.User" scope="session" />
         <c:forEach var="row" items="${userData.rows}">
+            <jsp:setProperty name="user" property="userID" value="${row.userID}" />
             <jsp:setProperty name="user" property="userName" value="${row.userName}" />
             <jsp:setProperty name="user" property="firstName" value="${row.firstName}" />
             <jsp:setProperty name="user" property="lastName" value="${row.lastName}" />
