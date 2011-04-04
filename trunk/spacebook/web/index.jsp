@@ -35,16 +35,7 @@
                     <li><c:out value="Go back to the 'spaceDB' folder and open the file 'insertOne.sql' by double-clicking on it." /></li>
                     <li><c:out value="From the 'Connection' drop down, select:" /><br /><c:out value="'jdbc:derby://localhost:1527/spaceDB[spaceUser on SPACEUSER]'." /></li>
                     <li><c:out value="Click the 'Run SQL' button." /></li>
-                    <li><c:out value="Go back to the 'spaceDB' folder, open the file 'insertBuildings.sql'." /></li>
-                    <li><c:out value="Go to line 24 of the file. You will see a declaration for the member variable 'buildings'." /></li>
-                    <li><c:out value="You will need to configure this variable with the correct path to the 'buildings.xml' file on your local machine." /></li>
-                    <li><c:out value="To get the correct path, go to the Projects tab and expand the 'Web Pages' folder." /></li>
-                    <li><c:out value="Right-click on the file 'buildings.xml' and select: Properties. A window will open.." /></li>
-                    <li><c:out value="Beside the list entry 'All Files', you will see a file path with a small button next to it. Click the button." /></li>
-                    <li><c:out value="Another window will open revealing the full path. Highlight the path and use 'CTRL-C' to copy it." /></li>
-                    <li><c:out value="Paste this into the value of the member variable 'buildings' on line 24 of the 'insertBuildings.sql' file." /></li>
-                    <li><c:out value="Remember, since this variable is a String, you must escape the slashes in the file path with another slash." /><br /><c:out value="EX: 'C:\path' becomes 'C:\\path'." /></li>
-                    <li><c:out value="Right-click on the 'insertBuildings.sql' file and select: Run File." /></li>
+                    <li><c:out value="Go back to the 'spaceDB' folder, right-click on the file 'insertBuildings.sql' and select: Run File" /></li>
                     <li><c:out value="Go back to the 'spaceDB' folder and open the file 'insertTwo.sql' by double-clicking on it." /></li>
                     <li><c:out value="From the 'Connection' drop down, select:" /><br /><c:out value="'jdbc:derby://localhost:1527/spaceDB[spaceUser on SPACEUSER]'." /></li>
                     <li><c:out value="Click the 'Run SQL' button." /></li>
