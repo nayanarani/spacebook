@@ -11,6 +11,7 @@
     int buildingID = 0;
     int roomID = 0;
     int groupID = 0;
+    String bookingDate = "";
 
     if(request.getParameter("bookingID").compareTo("") != 0){
         bookingID = Integer.parseInt(request.getParameter("bookingID").trim());
@@ -31,13 +32,17 @@
     if(request.getParameter("groupID").compareTo("") != 0){
         groupID = Integer.parseInt(request.getParameter("groupID").trim());
     }
+
+    if(request.getParameter("bookingDate").compareTo("") != 0){
+        bookingDate = request.getParameter("bookingDate");
+    }
 %>
 <jsp:setProperty name="book_req" property="bookingID" value="<%=bookingID%>"/>
 <jsp:setProperty name="book_req" property="timeSlotID" value="<%=timeslotID%>"/>
 <jsp:setProperty name="book_req" property="buildingID" value="<%=buildingID%>"/>
 <jsp:setProperty name="book_req" property="roomID" value="<%=roomID%>"/>
 <jsp:setProperty name="book_req" property="groupID" value="<%=groupID%>"/>
-<jsp:setProperty name="book_req" property="bookingDate" value="<%=request.getParameter("bookingDate")%>"/>
+<jsp:setProperty name="book_req" property="bookingDate" value="<%=bookingDate%>"/>
 
 <c:if test="${book_req.bookingID > 0}">
     <%
