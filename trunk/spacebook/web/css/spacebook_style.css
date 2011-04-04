@@ -6,7 +6,7 @@
 */
 
 body {
-    width: 900px;
+    width: 1000px;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -49,13 +49,13 @@ text-decoration: none;
 
 .main{
     float:left;
-    width: 880px;
+    width: 980px;
     padding: 5px;
 }
 
 .content{
     float:left;
-    width:680px;
+    width:780px;
     text-align: left;
     font: normal 16px calibri, arial, tahoma;
     color: #000000;
@@ -115,7 +115,7 @@ text-decoration: none;
 }
 
 .timeslotTable{
-    width:450px;
+    width:600px;
     background-color: #375C91;
 }
 

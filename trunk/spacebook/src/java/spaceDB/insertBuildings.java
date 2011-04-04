@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package spaceDB;
 
@@ -22,7 +18,7 @@ import org.xml.sax.SAXException;
 
 /**
  *
- * @author Benjamin
+ * @author Benjamin, Steve
  */
 public class insertBuildings {
     private String buildings = "C:\\Users\\WestfallHome\\Documents\\NetBeansProjects\\spacebook\\web\\buildings.xml"; //this must be the path on your machine to buildings.xml
