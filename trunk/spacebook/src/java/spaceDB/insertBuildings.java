@@ -21,7 +21,7 @@ import org.xml.sax.SAXException;
  * @author Benjamin, Steve
  */
 public class insertBuildings {
-    private String buildings = "C:\\Users\\WestfallHome\\Documents\\NetBeansProjects\\spacebook\\web\\buildings.xml"; //this must be the path on your machine to buildings.xml
+    private String buildings = "/home/jamsea/programming/334/spacebook/web/buildings.xml"; //this must be the path on your machine to buildings.xml
     private String entityElementsName = "buildings";
     private Document dom;
     private spaceDBAdapter db = new spaceDBAdapter();

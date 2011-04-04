@@ -10,15 +10,26 @@
 <%@include file="WEB-INF/jspf/tagsAndData.jspf"%>
 
 <jsp:useBean id="book_req" class="spaceBeans.Booking" scope="request" />
-    <jsp:setProperty name="book_req" property="buildingID" value="<%=Integer.parseInt(request.getParameter("buildingID").trim())%>" />
     <%
         int groupID = 0;
         if(request.getParameter("groupID").compareTo("") != 0){
             groupID = Integer.parseInt(request.getParameter("groupID").trim());
         }
+
+        int buildingID = 0;
+        if(request.getParameter("buildingID").compareTo("") != 0){
+            buildingID = Integer.parseInt(request.getParameter("buildingID").trim());
+        }
+
+        String bookingDate = "";
+        if(request.getParameter("bookingDate").compareTo("") != 0){
+            bookingDate = request.getParameter("bookingDate");
+        }
     %>
+    <jsp:setProperty name="book_req" property="buildingID" value="<%=buildingID%>" />
+
     <jsp:setProperty name="book_req" property="groupID" value="<%=groupID%>" />
-    <jsp:setProperty name="book_req" property="bookingDate" value="<%=request.getParameter("bookingDate")%>" />
+    <jsp:setProperty name="book_req" property="bookingDate" value="<%=bookingDate%>" />
 
 <jsp:useBean id="user" class="spaceBeans.User" scope="session"/>
     <c:if test="${user.userName == null || user.userName ==''}">
