@@ -54,7 +54,7 @@
                 <c:out value="None." />
             </c:when>
             <c:otherwise>
-                <form name="groupMemberForm" action="leaveGroup.jsp" method="POST">
+                <form name="groupMemberForm" action="leaveGroup" method="POST">
                     <table class="groupTable">
                         <thead>
                             <th>
@@ -85,6 +85,7 @@
                         </tbody>
                     </table>
                     <input type="hidden" id="groupID" name="groupID" value="" />
+                    <input type="hidden" id="userID" name="userID" value="${user.userID}" />
                 </form>
             </c:otherwise>
         </c:choose>
@@ -94,7 +95,7 @@
                 <c:out value="None." />
             </c:when>
             <c:otherwise>
-                <form name="groupAdminForm" action="deleteGroup.jsp" method="POST">
+                <form name="groupAdminForm" action="deleteGroup" method="POST">
                     <table class="groupTable">
                         <thead>
                             <th>
