@@ -37,7 +37,7 @@
     <div class="content">
         <h2><c:out value="Groups on spacebook" /></h2>
         <h3><c:out value="You are logged in as: ${user.userName}" /></h3>
-        <form name="groupDetails" action="joinGroup.jsp" method="POST">
+        <form name="groupDetails" action="joinGroup" method="POST">
             <table class="groupTable">
                 <thead>
                     <th><c:out value="Group Name" /></th>
@@ -80,11 +80,12 @@
                         </tr>
                     </c:forEach>
                     <input type="hidden" id="groupID" name="groupID" value="" />
+                    <input type="hidden" id="userID" name="userID" value="${user.userID}" />
                 </tbody>
              </table>
          </form>
          <h2><c:out value="Create a new group on spacebook" /></h2>
-         <form name="createGroup" action="createGroup.jsp" method="POST">
+         <form name="createGroupForm" action="createGroup" method="POST">
              <table>
                  <tr>
                      <td>
@@ -92,6 +93,7 @@
                      </td>
                      <td>
                          <input type="submit" onclick="return checkForm()" value="Create Group" />
+                         <input type="hidden" id="userID" name="userID" value="${user.userID}" />
                      </td>
                  </tr>
              </table>
