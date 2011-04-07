@@ -50,7 +50,8 @@ CREATE TABLE Bookings(
     CONSTRAINT fkcBookings1 Foreign Key (timeslotID) references Timeslots(timeslotID),
     CONSTRAINT fkcBookings2 Foreign Key (buildingID) references Buildings(buildingID),
     CONSTRAINT fkcBookings3 Foreign Key (roomID) references Rooms(roomID),
-    CONSTRAINT fkcBookings4 Foreign Key (groupID) references Groups(groupID)
+    CONSTRAINT fkcBookings4 Foreign Key (groupID) references Groups(groupID),
+    CONSTRAINT ukcBookings1 UNIQUE (timeslotID, bookingDate, groupID)
 );
 
 CREATE TABLE GroupUserXR(
