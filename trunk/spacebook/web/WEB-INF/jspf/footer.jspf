@@ -9,13 +9,11 @@
 
   <footer>
       <nav>
-      <div align="center">
+      <div id="center">
           <a href="index.jsp"> Spacebook </a>
       </div>
       </nav>
   </footer>
 
-  </div>
 
   </body>
-</html>
