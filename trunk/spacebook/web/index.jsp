@@ -4,14 +4,14 @@
     Author     : Steve Westfall
 --%>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <%@include file="WEB-INF/jspf/tagsAndData.jspf"%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Welcome to spacebook!</title>
         <%@include file="WEB-INF/jspf/header.jspf" %>
-            <div class="content">Welcome to spacebook! <br /><br />
+                <h1> Welcome to spacebook </h1> <br /><br />
                 <c:out value="We developed this java based web application for our 60-334: WWW Info Systems Development class project at the" />&nbsp;<a href="http://www.uwindsor.ca" target="_blank"><c:out value="University of Windsor" /></a><c:out value=". The application will allow users to book a space in order to hold an event or meeting." /><br /><br />
                 <c:out value="This application allows users to: "/>
                 <ul>
@@ -56,6 +56,19 @@
                 <b><c:out value="Username:" /></b>&nbsp;<c:out value="fakeuser1 through fakeuser10" /><br />
                 <b><c:out value="Password:" /></b>&nbsp;<c:out value="123456" /><br /><br />
                 <c:out value="Of course, you can always register your own account with your own information in order to test our application." /><br /><br />
-            </div><!-- end:content -->
+            </div><!-- end:col1 -->
+
+            <div class="col2">
+            <!-- Column 2 start (Left Sidebar) -->
+
+            <!-- Column 2 end -->
+            </div>
+            <div class="col3">
+            <!-- Column 3 start (Right Sidebar) -->
+
+            <!-- Column 3 end -->
+            </div>
+
+
         <%@include file="WEB-INF/jspf/footer.jspf" %>
 </html>

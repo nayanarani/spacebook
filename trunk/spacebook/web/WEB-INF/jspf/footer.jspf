@@ -1,10 +1,21 @@
 <%--
-    Document   : header
+    Document   : Footer
     Created on : Mar 14, 2011, 3:04:55 PM
     Author     : Jamie Hush, Steve Westfall
 --%>
+		</div> <!-- colleft end -->
+	</div> <!-- colmid end -->
+</div> <!-- colmask threecol -->
 
-            </div><!-- end:padder -->
+  <footer>
+      <nav>
+      <div align="center">
+          <a href="index.jsp"> Spacebook </a>
+      </div>
+      </nav>
+  </footer>
 
-        </div><!-- end:main -->
-    </body>
+  </div>
+
+  </body>
+</html>

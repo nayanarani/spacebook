@@ -4,7 +4,7 @@
     Author     : Jamie Hush, Steve Westfall
 --%>
 
-    <link rel="stylesheet" type="text/css" href="css/spacebook_style.css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen, projection">
     <jsp:scriptlet>
         response.setHeader("Cache-Control","no-cache");
         response.setHeader("Cache-Control","no-store");
@@ -13,25 +13,29 @@
     </jsp:scriptlet>
     </head>
     <body>
-        <div class="header_image">
-            <img src="images/spacebook_logo.jpg" border="0" alt="spacebook" title="Welcome to spacebook!" />
-        </div><!-- end:header_image -->
 
-        <div class="main">
-            <div class="navigation">
-                <a href="index.jsp"><c:out value="Home" /></a>
-                <c:choose>
-                    <c:when test="${user.userName == null || user.userName ==''}">
-                        <a href="login.jsp"><c:out value="Login" /></a>
-                        <a href="register.jsp"><c:out value="Register" /></a>
-                    </c:when>
-                    <c:otherwise>
-                        <a href="logout.jsp"><c:out value="Logout" /></a>
-                        <a href='myAccount.jsp'><c:out value="View Profile" /></a>
-                        <a href="groups.jsp"><c:out value="View Groups" /></a>
-                        <a href="buildings.xml"><c:out value="View Buildings" /></a>
-                        <a href="book.jsp"><c:out value="Book a Space" /></a>
-                    </c:otherwise>
-                </c:choose>
+           <div id="header">
+               <h1>Spacebook</h1>
+                <nav>
+                    <ul>
+                        <li><a href="index.jsp"><c:out value="Home" /></a></li>
+                        <c:choose>
+                            <c:when test="${user.userName == null || user.userName ==''}">
+                                <li><a href="login.jsp"><c:out value="Login" /></a></li>
+                                <li><a href="register.jsp"><c:out value="Register" /></a></li>
+                            </c:when>
+                            <c:otherwise>
+                                <li><a href="logout.jsp"><c:out value="Logout" /></a></li>
+                                <li><a href='myAccount.jsp'><c:out value="View Profile" /></a></li>
+                                <li><a href="groups.jsp"><c:out value="View Groups" /></a></li>
+                                <li><a href="buildings.xml"><c:out value="View Buildings" /></a></li>
+                                <li><a href="book.jsp"><c:out value="Book a Space" /></a></li>
+                            </c:otherwise>
+                        </c:choose>
+                    </ul>
+                </nav>
             </div><!-- end:navigation -->
-            <div class="padder">
+            <div class="colmask threecol">
+                <div class="colmid">
+                        <div class="colleft">
+                                <div class="col1">
