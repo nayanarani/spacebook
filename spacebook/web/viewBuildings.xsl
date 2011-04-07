@@ -13,25 +13,33 @@
     <xsl:output method="html"/>
 
     <xsl:template match="/">
+
         <html>
             <head>
+                <link rel="stylesheet" href="css/style.css" type="text/css" media="screen, projection" />
                 <title>View Buildings: spacebook</title>
-                <link rel="stylesheet" type="text/css" href="css/spacebook_style.css" />
             </head>
-            <body>
-                <div class="header_image">
-                    <img src="images/spacebook_logo.jpg" border="0" alt="spacebook" title="Welcome to spacebook!" />
-                </div><!-- end:header_image -->
+    <body>
+           <div id="header">
+               <h1>Spacebook</h1>
+                <nav>
+                    <ul>
+                        <li><a href="index.jsp">Home</a></li>
+                        <li><a href="login.jsp">Login</a></li>
+                        <li><a href="register.jsp">Register</a></li>
+                        <li><a href="logout.jsp">Logout</a></li>
+                        <li><a href='myAccount.jsp'>View Profile</a></li>
+                        <li><a href="groups.jsp">View Groups</a></li>
+                        <li><a href="buildings.xml">View Buildings</a></li>
+                        <li><a href="book.jsp">Book a Space</a></li>
+                    </ul>
+                </nav>
+            </div><!-- end:navigation -->
+            <div class="colmask threecol">
+                <div class="colmid">
+                        <div class="colleft">
+                                <div class="col1">
 
-                <div class="main">
-                    <div class="navigation">
-                        <a href="index.jsp">Home</a>
-                        <a href="logout.jsp">Logout</a>
-                        <a href="myAccount.jsp">View Profile</a>
-                        <a href="groups.jsp">View Groups</a>
-                        <a href="buildings.xml">View Buildings</a>
-                        <a href="book.jsp">Book a Space</a>
-                    </div><!-- end:navigation -->
                     <div class="padder">
                         <table class="buildingTable" cell-spacing="1">
                             <thead>
@@ -53,9 +61,21 @@
                             </tbody>
                         </table>
                     </div><!-- end:padder -->
-                </div><!-- end:main -->
-            </body>
-        </html>
+		</div> <!-- col1 end -->
+            </div> <!-- colleft end -->
+	</div> <!-- colmid end -->
+</div> <!-- colmask threecol -->
+
+  <footer>
+      <nav>
+      <div align="center">
+          <a href="index.jsp"> Spacebook </a>
+      </div>
+      </nav>
+  </footer>
+  
+  </body>
+</html>
     </xsl:template>
 
 </xsl:stylesheet>
