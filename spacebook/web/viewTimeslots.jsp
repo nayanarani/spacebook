@@ -69,6 +69,7 @@
 
         <form name="timeslotDetails" action="processBooking.jsp" method="POST">
             <c:forEach var="room" items="${roomData.rows}">
+                <br />
                 <h3><c:out value="Availability for Room ${room.roomNumber}" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<c:out value="Capacity: ${room.capacity}" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<c:out value="Projector: ${room.projector}" /></h3>
                 <table class="timeslotTable">
                     <thead>
@@ -126,12 +127,48 @@
                                                 </c:forEach>
                                             </c:when>
                                             <c:otherwise>
-                                                <sql:query var="groupInfo" dataSource="${dataSource}">
-                                                        SELECT * FROM Groups WHERE groupID = ${book_req.groupID}
-                                                    </sql:query>
-                                                    <c:forEach var="groupRow" items="${groupInfo.rows}">
-                                                        <input type="submit" id="${groupRow.groupID}" name="${groupRow.groupID}" value="Book for ${groupRow.groupName}" onclick="setIDs(0,${room.roomID},${timeslot.timeslotID},${groupRow.groupID})" />
+                                                <sql:query var="timeslotByGroup" dataSource="${dataSource}">
+                                                    SELECT Bookings.timeslotID, Groups.groupName FROM Bookings, Groups where Bookings.groupID = ${book_req.groupID} AND Groups.groupID = ${book_req.groupID} AND Bookings.bookingDate = '${book_req.bookingDate}'
+                                                </sql:query>
+                                                <c:if test="${timeslotByGroup.rowCount > 0}">
+                                                    <c:set var="bookedElsewhere" value="0" />
+                                                    <c:forEach var="timeslotByGroupRow" items="${timeslotByGroup.rows}">
+                                                        <c:if test="${(timeslot.timeslotID == timeslotByGroupRow.timeslotID)}">
+                                                            <c:set var="bookedElsewhere" value="1" />
+                                                        </c:if>
                                                     </c:forEach>
+                                                    <c:choose>
+                                                        <c:when test="${(bookedElsewhere == 1)}">
+                                                            <sql:query var="groupInfo" dataSource="${dataSource}">
+                                                                SELECT * FROM Groups WHERE groupID = ${book_req.groupID}
+                                                            </sql:query>
+                                                            <c:forEach var="groupRow" items="${groupInfo.rows}">
+                                                                <c:out value="${groupRow.groupName} Booked in " /><br />
+                                                                <sql:query var="elsewhere" dataSource="${dataSource}">
+                                                                    SELECT Buildings.buildingName, Rooms.roomNumber, Bookings.timeslotID
+                                                                    FROM Buildings, Rooms, Bookings
+                                                                    WHERE Bookings.bookingDate = '${book_req.bookingDate}'
+                                                                    AND Bookings.groupID = ${book_req.groupID}
+                                                                    AND Bookings.roomID = Rooms.roomID
+                                                                    AND Bookings.buildingID = Buildings.buildingID
+                                                                </sql:query>
+                                                                <c:forEach var="elsewhereRow" items="${elsewhere.rows}">
+                                                                    <c:if test="${(timeslot.timeslotID == elsewhereRow.timeslotID)}">
+                                                                        <c:out value="${elsewhereRow.buildingName} ${elsewhereRow.roomNumber}" />
+                                                                    </c:if>
+                                                                </c:forEach>
+                                                            </c:forEach>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <sql:query var="groupInfo" dataSource="${dataSource}">
+                                                                SELECT * FROM Groups WHERE groupID = ${book_req.groupID}
+                                                            </sql:query>
+                                                            <c:forEach var="groupRow" items="${groupInfo.rows}">
+                                                                <input type="submit" id="${groupRow.groupName}" name="${groupRow.groupName}" value="Book for ${groupRow.groupName}" onclick="setIDs(0,${room.roomID},${timeslot.timeslotID},${groupRow.groupID})" />
+                                                            </c:forEach>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </c:if>
                                             </c:otherwise>
                                         </c:choose>
                                     </td>
