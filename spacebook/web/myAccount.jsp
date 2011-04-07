@@ -31,17 +31,6 @@
             SELECT * FROM Groups WHERE adminID = ${user.userID} ORDER BY groupName
         </sql:query>
 
-        <sql:query var="bookingData" dataSource="${dataSource}">
-            SELECT groupName, startTime, endTime, bookingDate, buildingName
-            FROM Bookings, GroupUserXR, Groups, Buildings, Timeslots
-            WHERE Bookings.groupID = GroupUserXR.groupID
-            AND GroupUserXR.userID = ${user.userID}
-            AND GroupUserXR.groupID = Groups.groupID
-            AND Bookings.timeslotID = Timeslots.timeslotID
-            AND Bookings.buildingID = Buildings.buildingID
-            ORDER BY Bookings.bookingDate, Timeslots.startTime
-        </sql:query>
-
         <title><c:out value="${user.userName} myAccount - spacebook" /></title>
         <script type="text/javascript" language="javascript">
             function setGroupID(groupID){
@@ -133,56 +122,6 @@
                 </form>
             </c:otherwise>
         </c:choose>
-        <h3><c:out value="You're groups have the following bookings:" /></h3>
-        <c:choose>
-            <c:when test="${bookingData.rowCount == 0}">
-                <c:out value="None." />
-            </c:when>
-            <c:otherwise>
-                <table class="groupTable">
-                    <thead>
-                        <th>
-                            <c:out value="Group Name" />
-                        </th>
-                        <th>
-                            <c:out value="Room Booked" />
-                        </th>
-                        <th>
-                            <c:out value="Date" />
-                        </th>
-                        <th>
-                            <c:out value="Start Time" />
-                        </th>
-                        <th>
-                            <c:out value="End Time" />
-                        </th>
-
-                    </thead>
-                    <tbody>
-                        <c:forEach var="bookingRow" items="${bookingData.rows}">
-                            <tr>
-                                <td>
-                                    <c:out value="${bookingRow.groupName}" />
-                                </td>
-                                <td>
-                                    <c:out value="${bookingRow.buildingName}" />
-                                </td>
-                                <td>
-                                    <c:out value="${bookingRow.bookingDate}" />
-                                </td>
-                                <td>
-                                    <c:out value="${bookingRow.startTime}" />
-                                </td>
-                                <td>
-                                    <c:out value="${bookingRow.endTime}" />
-                                </td>
-                            </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
-            </c:otherwise>
-        </c:choose>
-        
     </div><!-- end:content -->
     <%@include file="WEB-INF/jspf/footer.jspf" %>
 </html>
