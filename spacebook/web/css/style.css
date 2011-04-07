@@ -19,7 +19,7 @@ body {
 	font-size:90%;
 }
 a {
-	color:#369;
+	color:#fff; /*#369*/
 }
 a:hover {
 	color:#fff;
@@ -144,9 +144,9 @@ border-width:5px;*/
 .threecol .col1 {
         border-right: 0.5px solid #000000;
         border-left: 0.5px solid #000000;
-        -moz-box-shadow: 10px 10px 5px #888;
+        /*-moz-box-shadow: 10px 10px 5px #888;
         -webkit-box-shadow: 10px 10px 5px #888;
-        /*box-shadow: 10px 10px 5px #888;*/
+        box-shadow: 10px 10px 5px #888;*/
         padding: 15px;
 	width:56%;			/* width of center column content (column width minus padding on either side) (was 46) */
 	left:102%;			/* 100% plus left padding of center column */
@@ -174,6 +174,10 @@ footer p {
 footer a {
    color:#FFFFFF;
    text-decoration: none;
+}
+
+footer #center {
+    text-align: center;
 }
 
 /*Menu style*/
